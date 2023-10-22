@@ -1,0 +1,81 @@
+.principal {
+    &-body {
+        height: 100%;
+        width: 100%;
+        background: radial-gradient(#3498DB, #85C1E9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-container {
+        width: 90%;
+        height: 90%;
+        background-color: white;
+        box-sizing: border-box;
+        border-radius: 2rem;
+        padding: 2rem;
+        overflow: auto;
+    }
+}
+
+.input-search {
+    position: relative;
+
+    input {
+        width: 100%;
+        border-color: #3498DB;
+    }
+
+    i {
+        position: absolute;
+        font-size: 20px;
+        color: #3498DB;
+        top: 9px;
+        right: 9px;
+    }
+}
+
+table {
+
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+}
+
+thead {
+    color: #28B463;
+}
+
+table,
+tr,
+td,
+th {
+    border: 2px solid #28B463;
+    padding: 1rem;
+}
+
+td,
+th {
+    font-size: 12px;
+}
+
+th,
+td {
+    padding: .5rem;
+    width: 115px;
+
+}
+ul {
+    margin-top: 12px;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    li{
+        button{
+            width: 35px;
+        }
+    }
+}

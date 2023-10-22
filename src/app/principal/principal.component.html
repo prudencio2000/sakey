@@ -1,0 +1,61 @@
+<div class="principal-body">
+    <div class="principal-container">
+        <h2 class="title">Bienvenido saekey</h2>
+        <div class="btn-group">
+            <button class="btn btn-green">
+                <i class="fa fa-plus"></i>
+                Añadir contraseña
+            </button>
+            <div class="input-search">
+                <input type="text"  class="search" placeholder="Buscador ...">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <h3 class="title-sub">Contraseñas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario/Correo</th>
+                    <th>Contraseña</th>
+                    <th>Ubicación</th>
+                    <th>Otros Datos</th>
+                    <th>Operaciones</th>
+                </tr>
+   
+            </thead>
+            <tbody>
+                <tr *ngFor="let dat of dataView[pagina]">
+                    <td>{{dat.usuario}}</td>
+                    <td>{{dat.password}}</td>
+                    <td>{{dat.ubicacion}}</td>
+                    <td>{{dat.otrosDatos}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-orange">
+                                <i class="fa fa-pencil custom-animation"></i>
+                            </button>
+                            <button class="btn btn-red">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button class="btn btn-principal">
+                                <i class="fa fa-eye"></i>
+                            </button>
+                        </div>
+                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="">
+            <ul>
+                <li><button class="btn btn-principal" [disabled]="paginaAnterior===0" (click)="primero()"><i class="fa fa-step-backward"></i></button></li>
+                <li><button class="btn btn-principal" [disabled]="paginaAnterior===0" (click)="anterior()"><i class="fa fa-backward"></i></button></li>
+                <li *ngFor="let i of todasPaginas"><button class="btn btn-principal" [ngClass]="{'selected' : i-1===pagina}" (click)="changePagina(i-1)" >{{i}}</button></li>
+                <li><button class="btn btn-principal" [disabled]="paginaPosterior===paginas-1" (click)="posterior()"><i class="fa fa-forward"></i></button></li>
+                <li><button class="btn btn-principal" [disabled]="paginaPosterior===paginas-1" (click)="ultimo()"><i class="fa fa-step-forward"></i></button></li>
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -5,7 +5,7 @@ let appWin;
 createWindow = () => {
     appWin = new BrowserWindow({
         width: 800,
-        height: 600,
+        height: 700,
         title: "Angular and Electron",
         resizable: false,
         webPreferences: {

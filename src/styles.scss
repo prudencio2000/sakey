@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 @font-face {
     font-family: "Lobster";
     src: url('assets/fuentes/Lobster-Regular.ttf') format('truetype');
@@ -14,51 +15,75 @@
     src: url('assets/fuentes/Roboto-Regular.ttf') format('truetype');
     /* Otros formatos de fuente aquí si es necesario */
 }
+
 body {
     height: 100vh;
     font-family: 'roboto', sans-serif;
 }
-.formulario{
+
+.formulario {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
 }
 
-label{
+label {
     display: block;
-    margin-top: 2rem;
+    margin-top: 1.2rem;
     font-size: 16px;
     font-weight: bold;
 }
-.input-eyes{
+
+.input-eyes {
     position: relative;
-    input{
+
+    input {
         width: 100%;
     }
-    i{
+
+    i {
         position: absolute;
-        top:8px;
+        top: 8px;
         right: 10px;
         font-size: 20px;
         color: #E74C3C;
         cursor: pointer;
     }
 }
-input{
+
+input {
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
     border: 2px solid #E74C3C;
     color: #3498DB;
     outline: none;
-    &::placeholder{
+
+    &::placeholder {
         color: #3498DB;
         font-family: 'roboto';
         font-size: 14px;
         font-weight: 600;
     }
-   
+
 }
+
+.title {
+    font-family: "lobster", sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #E74C3C;
+    text-shadow: 2px 2px 2px #F5B7B1;
+
+    &-sub {
+        font-family: "lobster", sans-serif;
+        text-align: center;
+        color: #3498DB;
+        font-size: 2rem;
+        text-shadow: 2px 2px 2px #85C1E9;
+    }
+}
+
 .btn {
     display: block;
     box-sizing: border-box;
@@ -70,16 +95,85 @@ input{
     background-color: white;
     outline: none;
     cursor: pointer;
-    &-principal{
+
+    &-principal {
         color: #3498DB;
         border: 2px solid #3498DB;
         border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
-        &:hover{
+
+        &:hover {
             background-color: #3498DB;
             color: white;
             border-color: white;
         }
 
+        &.selected {
+            background-color: #3498DB;
+            color: white;
+            border-color: white;
+        }
+
+        &:disabled {
+            color: #A6ACAF;
+            border: 2px solid #A6ACAF;
+            border-radius: 10px;
+
+            &:hover {
+                color: #A6ACAF;
+                border: 2px solid #A6ACAF;
+                border-radius: 10px;
+                background-color: white;
+            }
+        }
+
     }
+
+    &-red {
+        color: #E74C3C;
+        border: 2px solid #E74C3C;
+        border-radius: 10px;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: #E74C3C;
+            color: white;
+            border-color: white;
+        }
+
+    }
+
+    &-green {
+        color: #28B463;
+        border: 2px solid #28B463;
+        border-radius: 10px;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: #28B463;
+            color: white;
+            border-color: white;
+        }
+
+    }
+
+    &-orange {
+        color: #D4AC0D;
+        border: 2px solid #D4AC0D;
+        border-radius: 10px;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: #D4AC0D;
+            color: white;
+            border-color: white;
+        }
+
+    }
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

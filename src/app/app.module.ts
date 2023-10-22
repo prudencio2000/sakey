@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { OlvideComponent } from './olvide/olvide.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrarComponent,
-    OlvideComponent
+    OlvideComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,

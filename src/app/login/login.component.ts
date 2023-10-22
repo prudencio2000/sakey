@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
       password : new FormControl('')
     })
 
-    constructor(){
+    constructor(private router : Router){
 
     }
 
@@ -25,6 +26,6 @@ export class LoginComponent {
     }
     ngSubmit (){
       const password = this.formulario.value.password;
-      alert(password)
+      this.router.navigateByUrl('/principal');
     }
 }
