@@ -1,0 +1,30 @@
+.login {
+    &-body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(#3498DB, #85C1E9);
+    }
+
+    &-container {
+        width: 500px;
+        height: auto;
+        background-color: white;
+        box-sizing: border-box;
+        padding: 2rem;
+        border-radius: 2rem;
+    }
+    &-title{
+        font-family: "lobster", sans-serif ;
+        text-align: center;
+        font-size: 2.5rem;
+        color: #E74C3C;
+        text-shadow: 2px 2px 2px #F5B7B1;
+    }
+}
+a{
+    color: #3498DB;
+    text-align: center;
+    text-decoration: none;
+}
