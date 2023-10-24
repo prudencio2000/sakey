@@ -1,0 +1,43 @@
+table {
+
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+}
+
+thead {
+    color: #28B463;
+}
+
+table,
+tr,
+td,
+th {
+    border: 2px solid #28B463;
+    padding: 1rem;
+}
+
+td,
+th {
+    font-size: 12px;
+}
+
+th,
+td {
+    padding: .5rem;
+    width: 115px;
+
+}
+ul {
+    margin-top: 12px;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    li{
+        button{
+            width: 35px;
+        }
+    }
+}

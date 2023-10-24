@@ -8,6 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { OlvideComponent } from './olvide/olvide.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { TablaComponent } from './tabla/tabla.component';
+import { EditorComponent } from './editor/editor.component';
+import { ViewComponent } from './view/view.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { PrincipalComponent } from './principal/principal.component';
     LoginComponent,
     RegistrarComponent,
     OlvideComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    TablaComponent,
+    EditorComponent,
+    ViewComponent,
+   
   ],
   imports: [
     BrowserModule,
