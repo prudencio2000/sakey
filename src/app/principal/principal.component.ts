@@ -11,6 +11,7 @@ export class PrincipalComponent {
   buscador: FormGroup = new FormGroup({
     text: new FormControl('')
   });
+  anadir : boolean = false;
   @ViewChild(TablaComponent) tableComponent : TablaComponent | any;
   data = [
     {
@@ -90,6 +91,10 @@ export class PrincipalComponent {
       this.tableComponent.updateDatos(this.data_aux);
       this.cdr.detectChanges()
     })
+  }
+  btnAnadir(){
+    this.anadir=true;
+    this.cdr.detectChanges();
   }
 
 

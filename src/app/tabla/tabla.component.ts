@@ -43,7 +43,7 @@ export class TablaComponent implements OnInit {
     this.pagina = position;
     if (position > 0) this.paginaAnterior = position
     else this.paginaAnterior = 0
-    if (position <= this.paginas) this.paginaPosterior = position + 1;
+    if (position <= this.paginas) this.paginaPosterior = position ;
     else this.paginaPosterior = position
 
   }

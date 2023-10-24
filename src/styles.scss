@@ -19,6 +19,7 @@
 body {
     height: 100vh;
     font-family: 'roboto', sans-serif;
+    position:relative;
 }
 
 .formulario {
@@ -51,7 +52,7 @@ label {
     }
 }
 
-input {
+input,textarea {
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
@@ -66,6 +67,10 @@ input {
         font-weight: 600;
     }
 
+}
+textarea{
+    resize: none;
+    height: 150px;
 }
 
 .title {
