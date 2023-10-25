@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TablaComponent } from '../tabla/tabla.component';
+import { EditorService } from '../services/editor.service';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss']
 })
-export class PrincipalComponent {
+export class PrincipalComponent implements OnInit{
   buscador: FormGroup = new FormGroup({
     text: new FormControl('')
   });
@@ -82,7 +83,8 @@ export class PrincipalComponent {
     },
   ];
   data_aux:any []= [];
-  constructor(private cdr : ChangeDetectorRef) {
+  
+  constructor(private cdr : ChangeDetectorRef, private editor:EditorService) {
     this.buscador.valueChanges.subscribe((data) => {
       const text = data.text;
       this.data_aux = this.data.filter((data) => {
@@ -90,6 +92,12 @@ export class PrincipalComponent {
       });
       this.tableComponent.updateDatos(this.data_aux);
       this.cdr.detectChanges()
+    })
+  }
+  ngOnInit(): void {
+    this.editor.$modal.subscribe((valor) => {
+      this.anadir = valor;
+      this.cdr.detectChanges();
     })
   }
   btnAnadir(){
