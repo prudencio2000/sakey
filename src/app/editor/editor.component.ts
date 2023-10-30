@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EditorService } from '../services/editor.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editor',
@@ -9,6 +10,12 @@ import { EditorService } from '../services/editor.service';
 export class EditorComponent {
   tipo: string = "password";
   ver:boolean = false;
+  formulario : FormGroup = new FormGroup({
+    usuario: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
+    ubicacion: new FormControl ('',[Validators.required]),
+    datosExtra: new FormControl('')
+  });
   constructor(private editor:EditorService){
 
   }
@@ -19,5 +26,8 @@ export class EditorComponent {
   }
   close(){
     this.editor.$modal.emit(false)
+  }
+  guardar(){
+    alert(JSON.stringify(this.formulario.value))
   }
 }

@@ -1,1 +1,31 @@
-<p>registrar works!</p>
+<div class="registre-body">
+    <div class="registre-container">
+        <h2 class="title">Bienvenidos a Sakey</h2>
+        <form [formGroup]="formulario" class="formulario"  (ngSubmit)="ngSubmit()">
+            <label for="password">Contraseña</label>
+            <input placeholder="Pon tu contraseña" id="password" formControlName="password"  [type]="tipo">
+            <label for="repeat-password">Repite la Contraseña</label>
+            <input placeholder="Pon tu contraseña" id="password"  [type]="tipo">
+            <div class="item-checkbox">
+                <div class="checkbox">
+                    <input type="checkbox" id="verContraseñas" formControlName="repeatPassword"  (click)="verPassword()">
+                    <label for="verContraseñas" class="custom-checkbox"><i class="fa fa-check"></i></label>
+                </div>
+                <label for="">Ver Contraseñas</label>
+            </div>
+            <div *ngFor="let question of preguntasSeleccionada" class="formulario">
+                <label for="">{{question.label}}</label>
+                <input type="text" formControlName="{{'question_'+question.value}}">
+            </div>
+            <div class="separador"></div>
+            <label for="">Seleccione una pregunta</label>
+            <app-selector [datos]="preguntasSeguridad"></app-selector>
+            <div class="btn-group">
+                <button type="reset" class="btn btn-red">Cancelar</button>
+                <button type="submit" class="btn btn-principal">Registrar</button>
+            </div>
+           
+        </form>
+    </div>
+
+</div>

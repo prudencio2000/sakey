@@ -11,6 +11,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { TablaComponent } from './tabla/tabla.component';
 import { EditorComponent } from './editor/editor.component';
 import { ViewComponent } from './view/view.component';
+import { SelectorComponent } from './items/selector/selector.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ViewComponent } from './view/view.component';
     TablaComponent,
     EditorComponent,
     ViewComponent,
+    SelectorComponent,
    
   ],
   imports: [
