@@ -5,7 +5,7 @@
     </div>
     <div class="selector-option" *ngIf="options">
         <ul>
-            <li *ngFor="let item of items; let i = index" (click)="selected(item)" [ngClass]="{'selected': item.label === selecionado}">{{item.label}}</li>
+            <li *ngFor="let item of items; let i = index" (click)="selected(item)" [ngClass]="{'selected': item.id === selecionado}">{{item.titulo}}</li>
         </ul>
     </div>
 </div>

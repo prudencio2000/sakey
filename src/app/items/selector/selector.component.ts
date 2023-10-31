@@ -7,7 +7,6 @@ import { SelectorService } from 'src/app/services/selector.service';
   styleUrls: ['./selector.component.scss']
 })
 export class SelectorComponent implements OnInit{
-  @Input('datos') datos : any; 
   options:boolean=false;
   selecionado:string = 'Seleccione un Opcion';
   items: any [] = [];
@@ -15,15 +14,18 @@ export class SelectorComponent implements OnInit{
   
   }
   ngOnInit(): void {
-    this.items=this.datos;
+    
+  }
+  actualizarDatos(datos : any){
+    this.items=datos;
   }
   expandir(){
     this.options=true;
   }
   selected(item:any){
     this.selecionado= item.label;
-    this.selector.$modal.emit(item)
     this.options=false;
+    this.selector.$modal.emit(item)
    
   }
 }

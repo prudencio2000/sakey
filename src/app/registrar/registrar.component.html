@@ -1,7 +1,8 @@
 <div class="registre-body">
     <div class="registre-container">
         <h2 class="title">Bienvenidos a Sakey</h2>
-        <form [formGroup]="formulario" class="formulario"  (ngSubmit)="ngSubmit()">
+        <form [formGroup]="formulario" class="formulario" style="max-height: 500px;
+        overflow-x: auto;" (ngSubmit)="ngSubmit()">
             <label for="password">Contraseña</label>
             <input placeholder="Pon tu contraseña" id="password" formControlName="password"  [type]="tipo">
             <label for="repeat-password">Repite la Contraseña</label>
@@ -14,12 +15,12 @@
                 <label for="">Ver Contraseñas</label>
             </div>
             <div *ngFor="let question of preguntasSeleccionada" class="formulario">
-                <label for="">{{question.label}}</label>
-                <input type="text" formControlName="{{'question_'+question.value}}">
+                <label for="">{{question.titulo}}</label>
+                <input type="text" formControlName="{{'question_'+question.id}}">
             </div>
             <div class="separador"></div>
             <label for="">Seleccione una pregunta</label>
-            <app-selector [datos]="preguntasSeguridad"></app-selector>
+            <app-selector  *ngIf="preguntasSeguridad" ></app-selector>
             <div class="btn-group">
                 <button type="reset" class="btn btn-red">Cancelar</button>
                 <button type="submit" class="btn btn-principal">Registrar</button>
