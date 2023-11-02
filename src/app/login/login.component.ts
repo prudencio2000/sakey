@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class LoginComponent {
     ver: boolean =false;
     tipo : string = "password";
-
     formulario : FormGroup = new FormGroup({
       password : new FormControl('')
     })

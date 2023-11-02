@@ -23,7 +23,8 @@ export class SelectorComponent implements OnInit{
     this.options=true;
   }
   selected(item:any){
-    this.selecionado= item.label;
+    this.selecionado= item.titulo;
+    this.items = this.items.filter(data => data.id !== item.id);
     this.options=false;
     this.selector.$modal.emit(item)
    

@@ -1,6 +1,10 @@
 const { app, BrowserWindow } = require("electron");
 const { ipcMain } = require('electron');
 
+const crypto = require('crypto');
+
+const bcrypt = require('bcrypt');
+
 let sqlite3 = require('@journeyapps/sqlcipher').verbose();
 let db = new sqlite3.Database('./@D8p#vWzQy%T!kRn/$DbX&vR2Y!T9aPq.db');
 db.run("PRAGMA key = 'Jd$9Lp@5fX#sK!pR'");
@@ -18,23 +22,51 @@ createWindow = () => {
         }
     });
     ipcMain.on('ls-questions', (event, arg) => {
-        console.log(db);
         db.all("SELECT * FROM questions", (err, row) => {
             if (err) {
                 event.reply('ls-questions-respuesta', {
-                    status : false,
-                    mensaje : "Error no se ha encontrado ninguna pregunta",
-                    data :[]
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
                 });
             } else {
                 event.reply('ls-questions-respuesta', {
-                    status : true,
-                    mensaje : "",
-                    data :row
+                    status: true,
+                    mensaje: "",
+                    data: row
                 });
             }
         });
-
+    });
+    ipcMain.on('registrar-login', async (event, arg) => {
+        let stmt = db.prepare("INSERT INTO login (password) VALUES (?)");
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(arg.password, saltRounds);
+        stmt.run(hashedPassword);
+        stmt.finalize();
+        event.reply('registrar-login-respuesta',{
+            status:true,
+            mensaje:"Se ha registrado la contraseña",
+            data: {
+                idPassword : hashedPassword
+            }
+        })
+    });
+    ipcMain.on('registrar-respuesta', async (event, arg) => {
+      
+        for (let i = 0; i < arg.length; i++) {
+            let stmt = db.prepare("INSERT INTO login_questions (id_question,respuesta) VALUES (?,?)");
+            stmt.run(arg[i].idQuestion,arg[i].respuesta);
+            stmt.finalize();
+        
+        }
+        event.reply('registrar-respuesta-respuesta',{
+            status:true,
+            mensaje:"Se ha registrado las preguntas",
+            data: {
+                idPassword : hashedPassword
+            }
+        })
     });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
