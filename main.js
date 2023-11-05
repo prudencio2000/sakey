@@ -47,13 +47,10 @@ createWindow = () => {
         event.reply('registrar-login-respuesta',{
             status:true,
             mensaje:"Se ha registrado la contraseña",
-            data: {
-                idPassword : hashedPassword
-            }
+            data: []
         })
     });
     ipcMain.on('registrar-respuesta', async (event, arg) => {
-      
         for (let i = 0; i < arg.length; i++) {
             let stmt = db.prepare("INSERT INTO login_questions (id_question,respuesta) VALUES (?,?)");
             stmt.run(arg[i].idQuestion,arg[i].respuesta);
@@ -63,10 +60,25 @@ createWindow = () => {
         event.reply('registrar-respuesta-respuesta',{
             status:true,
             mensaje:"Se ha registrado las preguntas",
-            data: {
-                idPassword : hashedPassword
-            }
+            data: []
         })
+    });
+    ipcMain.on('ls-login', async (event, arg) => {
+        db.all("SELECT * FROM login LIMIT 1", (err, row) => {
+            if (err) {
+                event.reply('ls-login-respuesta', {
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
+                });
+            } else {
+                event.reply('ls-login-respuesta', {
+                    status: true,
+                    mensaje: "",
+                    data: row[0]
+                });
+            }
+        });
     });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 

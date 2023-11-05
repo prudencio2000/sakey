@@ -4,13 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { OlvideComponent } from './olvide/olvide.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 const routes: Routes = [
-  {path:"registrar", component:LoginComponent},
+  {path:"login", component:LoginComponent},
   {path:"olvide", component:OlvideComponent},
-  {path:"", component:RegistrarComponent},
-  {path:"principal", component:PrincipalComponent}
-  
+  {path:"registrar", component:RegistrarComponent},
+  {path:"principal", component:PrincipalComponent},
+  {path:"", component:RedirectComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,64 @@
+.reload {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // background: radial-gradient(#3498DB, #85C1E9);
+
+    i {
+        font-size: 64px;
+        position: relative;
+        left: 20px;
+        animation: moveRight 3s linear infinite;
+        color: #E74C3C;
+        text-shadow: 2px 2px 2px #F5B7B1;
+
+    }
+}
+
+.texto::before {
+    content: 'Cargando';
+    animation: cargando 3s linear infinite;
+    font-size: 25px;
+    color: #E74C3C;
+    text-shadow: 2px 2px 2px #F5B7B1;
+    font-weight: bold;
+}
+
+@keyframes cargando {
+    0% {
+        content: 'Cargando';
+    }
+
+    25% {
+        content: 'Cargando.';
+    }
+
+    50% {
+        content: 'Cargando..';
+    }
+
+    75% {
+        content: 'Cargando...';
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-animation {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+
+}

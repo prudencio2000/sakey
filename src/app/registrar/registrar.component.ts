@@ -1,9 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectorComponent } from '../items/selector/selector.component';
 import { SelectorService } from '../services/selector.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IpcService } from '../services/ipc.service';
 import { Question } from '../class/questions.class';
+import { OperacionesService } from '../services/operaciones.service';
+
+import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
+import { SwallService } from '../services/swall.service';
 
 @Component({
   selector: 'app-registrar',
@@ -18,19 +22,15 @@ export class RegistrarComponent implements OnInit {
     repeatPassword: new FormControl('', Validators.required)
   });
   preguntasSeleccionada: any = [];
-  preguntasSeguridad: Question [] = [];
-  contador : number = 0;
+  preguntasSeguridad: Question[] = [];
+  contador: number = 0;
   @ViewChild(SelectorComponent) SelectorComponent: SelectorComponent | any;
-  @ViewChild (SelectorComponent) selectron : SelectorComponent | any;
-  constructor(private selector: SelectorService, private cdr: ChangeDetectorRef, private ipcService: IpcService) { }
-  ngOnInit(): void {
-    this.ipcService.send('ls-questions', {});
-    this.ipcService.on('ls-questions-respuesta', (event: any, arg: any) => {
-      if(arg.status){
-        this.preguntasSeguridad = arg.data
-        this.selectron.actualizarDatos(this.preguntasSeguridad)
-      }
-    })
+  @ViewChild(SelectorComponent) selectron: SelectorComponent | any;
+  constructor(private selector: SelectorService, private router: Router, private operaciones: OperacionesService,private swall:SwallService) { }
+  async ngOnInit() {
+    const data = await this.operaciones.lsQuestion();
+    this.preguntasSeguridad = data.data
+    this.selectron.actualizarDatos(this.preguntasSeguridad)
     this.selector.$modal.subscribe({
       next: (data: any) => {
         this.preguntasSeleccionada.push(data)
@@ -47,21 +47,35 @@ export class RegistrarComponent implements OnInit {
     }
     this.isVer = !this.isVer;
   }
-  ngSubmit() {
-    const datos = this.formulario.value
-    let array_datos :any = []
+  async ngSubmit() {
+    const datos = this.formulario.value;
+    if (datos.password !== datos.repeatPassword){
+      this.swall.mensajeKO("Error con las contraseña !!!","Error las contraseña no coincides");
+      return
+    }else if (this.formulario.invalid) {
+      this.swall.mensajeKO("Error con los Campos !!!","Error no tiene que estar ningun campo vacio y debes seleccionar tres preguntas");
+      return
+    } else if (this.contador < 3) {
+      this.swall.mensajeKO("Error con los Preguntas  !!!","Tiene que seleccionar 3 preguntas");
+      return
+    }
+    let array_datos: any = []
     for (let clave in datos) {
-      if (clave.includes('question')){
+      if (clave.includes('question')) {
         console.log("entro");
-        
         array_datos.push({
           'idQuestion': clave.split("_")[1],
-          'respuesta' : datos[clave]
-        })   
+          'respuesta': datos[clave]
+        })
       }
     }
-  
-     this.ipcService.send('registrar-login',datos);
-     this.ipcService.send('registrar-respuesta',array_datos);
+    let resultado = await this.operaciones.registrarLogin(datos);
+    if (resultado.status) {
+      resultado = await this.operaciones.registrarQuestion(array_datos);
+      if (resultado.status) {
+        this.swall.mensajeOK("Operacion existosa !!!","El login se ha registrado correctamente");
+        this.router.navigate(['login']);
+      }
+    }
   }
 }

@@ -12,6 +12,7 @@ import { TablaComponent } from './tabla/tabla.component';
 import { EditorComponent } from './editor/editor.component';
 import { ViewComponent } from './view/view.component';
 import { SelectorComponent } from './items/selector/selector.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SelectorComponent } from './items/selector/selector.component';
     EditorComponent,
     ViewComponent,
     SelectorComponent,
+    RedirectComponent,
    
   ],
   imports: [
