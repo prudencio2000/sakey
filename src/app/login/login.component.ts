@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { OperacionesService } from '../services/operaciones.service';
+import { SwallService } from '../services/swall.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent {
       password : new FormControl('')
     })
 
-    constructor(private router : Router){
+    constructor(private router : Router, private operaciones : OperacionesService, private swall : SwallService){
 
     }
 
@@ -23,8 +25,14 @@ export class LoginComponent {
       if (!this.ver) this.tipo="password" 
       else this.tipo = "text" 
     }
-    ngSubmit (){
+    async ngSubmit (){
       const password = this.formulario.value.password;
-      this.router.navigateByUrl('/principal');
+      const respuesta = await this.operaciones.entrar(password)
+      if (respuesta.status){
+        this.router.navigate(['/principal'])
+      }else{
+        this.swall.mensajeKO('Error!','La contraseña es incorrepta');
+      }
+      
     }
 }

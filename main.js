@@ -63,6 +63,24 @@ createWindow = () => {
             data: []
         })
     });
+    ipcMain.on ('entrar',async(event, args )=>{
+        db.all("SELECT * FROM login LIMIT 1", async (err, row) => {
+            if (err) {
+                event.reply('entrar-respuesta', {
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
+                });
+            } else {
+                const respuesta = await bcrypt.compare(args, row[0].password)
+                event.reply('entrar-respuesta', {
+                    status: respuesta,
+                    mensaje: "",
+                    data: []
+                });
+            }
+        });
+    })
     ipcMain.on('ls-login', async (event, arg) => {
         db.all("SELECT * FROM login LIMIT 1", (err, row) => {
             if (err) {

@@ -27,7 +27,6 @@ export class OperacionesService {
   }
   async lsLogin(): Promise<any> {
     this.ipcService.send('ls-login', {});
-    
     return new Promise((resolve: any) => {
       this.ipcService.on('ls-login-respuesta', (event: any, data: any) => {
         resolve(data);
@@ -41,7 +40,14 @@ export class OperacionesService {
         resolve(arg)
       })
     })
-    
+  }
+  async entrar (password:string):Promise<any> {
+    this.ipcService.send('entrar', password);
+    return new Promise ((resolve:any)=>{
+      this.ipcService.on('entrar-respuesta', (event: any, arg: any) => {
+        resolve(arg)
+      })
+    })
   }
 
 }
