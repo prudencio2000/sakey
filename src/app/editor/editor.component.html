@@ -1,5 +1,5 @@
-<div class="layout">
-    <div class="dialog">
+<div class="layout"  [ngClass]="{'cerrar' : isCerrar}">
+    <div class="dialog" [ngClass]="{'cerrar-1' : isCerrar}">
         <div class="close" (click)="close()">
             <i class="fa fa-times"></i>
         </div>

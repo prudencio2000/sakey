@@ -50,4 +50,22 @@ export class OperacionesService {
     })
   }
 
+  async registrarKey (datos:any):Promise<any>{
+    this.ipcService.send('registrar-key',datos)
+    return new Promise ((resolve)=>{
+      this.ipcService.on('registrar-key-save',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
+
+  async lsKey ():Promise<any>{
+    this.ipcService.send('ls-key')
+    return new Promise ((resolve)=>{
+      this.ipcService.on('savekey-respuesta',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
+
 }

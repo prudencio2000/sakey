@@ -1,9 +1,9 @@
 const { app, BrowserWindow } = require("electron");
 const { ipcMain } = require('electron');
-
-const crypto = require('crypto');
-
 const bcrypt = require('bcrypt');
+const crypto = require('crypto-js');
+
+const clave = '8kZ$wE4Y#P1sXmN'; 
 
 let sqlite3 = require('@journeyapps/sqlcipher').verbose();
 let db = new sqlite3.Database('./@D8p#vWzQy%T!kRn/$DbX&vR2Y!T9aPq.db');
@@ -98,11 +98,42 @@ createWindow = () => {
             }
         });
     });
+    ipcMain.on('registrar-key',(event,arg)=>{
+        let stmt = db.prepare("INSERT INTO savekey (usuario_correo,password,ubicacion,otros_datos) VALUES (?,?,?,?)");
+        const password = crypto.AES.encrypt(arg.password, clave).toString();
+        stmt.run(arg.usuario,password,arg.ubicacion,arg.datosExtra);
+        stmt.finalize();
+        event.reply('registrar-key-save', {
+            status: true,
+            mensaje: "",
+            data: []
+        });
+    });
+    ipcMain.on('ls-key', async (event, arg) => {
+        db.all("SELECT * FROM savekey ", (err, row) => {
+            if (err) {
+                event.reply('savekey-respuesta', {
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
+                });
+            } else {
+       
+                event.reply('savekey-respuesta', {
+                    status: true,
+                    mensaje: "",
+                    data: row
+                });
+            }
+        });
+    });
+
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
     appWin.setMenu(null);
 
     appWin.webContents.openDevTools();
+
 
     appWin.on("closed", () => {
         appWin = null;

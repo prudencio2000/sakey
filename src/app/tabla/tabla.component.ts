@@ -17,8 +17,6 @@ export class TablaComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
-    this.crearTablaPaginacion();
   }
  
   crearTablaPaginacion() {
