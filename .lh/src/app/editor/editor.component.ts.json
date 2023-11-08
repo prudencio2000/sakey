@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/app/editor/editor.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1699431199223,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699431281297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,10 @@\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n-\r\n+      let save = this.operaciones.lsKey();\r\n+      this.tableComponent.updateDatos(save);\r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n         this.editor.$modal.emit(false)\r\n       }, 1000)\r\n"
+                },
+                {
+                    "date": 1699431387357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,10 @@\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n       let save = this.operaciones.lsKey();\r\n+      console.log(save);\r\n+      \r\n       this.tableComponent.updateDatos(save);\r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n         this.editor.$modal.emit(false)\r\n"
+                },
+                {
+                    "date": 1699431462020,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,13 +42,14 @@\n   guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n-      this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n       let save = this.operaciones.lsKey();\r\n       console.log(save);\r\n       \r\n       this.tableComponent.updateDatos(save);\r\n+      this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n+    \r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n         this.editor.$modal.emit(false)\r\n       }, 1000)\r\n"
+                },
+                {
+                    "date": 1699431520691,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,12 +42,9 @@\n   guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n-      let save = this.operaciones.lsKey();\r\n-      console.log(save);\r\n-      \r\n-      this.tableComponent.updateDatos(save);\r\n+     \r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n     \r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n"
+                },
+                {
+                    "date": 1699431587546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,12 @@\n   guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n-     \r\n+      let save = this.operaciones.lsKey();\r\n+      console.log(save);\r\n+      \r\n+      this.tableComponent.updateDatos(save);\r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n     \r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n"
+                },
+                {
+                    "date": 1699431755799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,12 +42,9 @@\n   guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n     if (resultado.status) {\r\n-      let save = this.operaciones.lsKey();\r\n-      console.log(save);\r\n-      \r\n-      this.tableComponent.updateDatos(save);\r\n+  \r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n     \r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n"
+                },
+                {
+                    "date": 1699435098997,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,12 +41,12 @@\n   }\r\n   guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = this.operaciones.registrarKey(datos);\r\n+    console.log(resultado);\r\n+    \r\n     if (resultado.status) {\r\n-  \r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n-    \r\n       this.isCerrar = true;\r\n       setTimeout(() => {\r\n         this.editor.$modal.emit(false)\r\n       }, 1000)\r\n"
+                },
+                {
+                    "date": 1699435150137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n     }, 1000)\r\n   }\r\n   guardar() {\r\n     let datos = this.formulario.value\r\n-    const resultado: any = this.operaciones.registrarKey(datos);\r\n+    const resultado: any = await this.operaciones.registrarKey(datos);\r\n     console.log(resultado);\r\n     \r\n     if (resultado.status) {\r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n"
+                },
+                {
+                    "date": 1699435156319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,12 +38,12 @@\n     setTimeout(() => {\r\n       this.editor.$modal.emit(false)\r\n     }, 1000)\r\n   }\r\n-  guardar() {\r\n+  async guardar() {\r\n     let datos = this.formulario.value\r\n     const resultado: any = await this.operaciones.registrarKey(datos);\r\n-    console.log(resultado);\r\n+\r\n     \r\n     if (resultado.status) {\r\n       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n       this.isCerrar = true;\r\n"
+                }
+            ],
+            "date": 1699431199223,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit, ViewChild } from '@angular/core';\r\nimport { EditorService } from '../services/editor.service';\r\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\r\nimport { OperacionesService } from '../services/operaciones.service';\r\nimport { SwallService } from '../services/swall.service';\r\nimport { TablaComponent } from '../tabla/tabla.component';\r\n\r\n@Component({\r\n  selector: 'app-editor',\r\n  templateUrl: './editor.component.html',\r\n  styleUrls: ['./editor.component.scss']\r\n})\r\nexport class EditorComponent implements OnInit {\r\n  tipo: string = \"password\";\r\n  ver: boolean = false;\r\n  isCerrar: boolean = false\r\n  formulario: FormGroup = new FormGroup({\r\n    usuario: new FormControl('', [Validators.required]),\r\n    password: new FormControl('', [Validators.required]),\r\n    ubicacion: new FormControl('', [Validators.required]),\r\n    datosExtra: new FormControl('')\r\n  });\r\n  @ViewChild(TablaComponent) tableComponent: TablaComponent | any;\r\n  constructor(private editor: EditorService, private operaciones: OperacionesService, private swall: SwallService) {\r\n\r\n  }\r\n  ngOnInit(): void {\r\n    this.isCerrar = false;\r\n  }\r\n\r\n  verPassword() {\r\n    this.ver = !this.ver;\r\n    if (!this.ver) this.tipo = \"password\"\r\n    else this.tipo = \"text\"\r\n  }\r\n  close() {\r\n    this.isCerrar = true;\r\n    setTimeout(() => {\r\n      this.editor.$modal.emit(false)\r\n    }, 1000)\r\n  }\r\n  guardar() {\r\n    let datos = this.formulario.value\r\n    const resultado: any = this.operaciones.registrarKey(datos);\r\n    if (resultado.status) {\r\n      this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');\r\n\r\n      this.isCerrar = true;\r\n      setTimeout(() => {\r\n        this.editor.$modal.emit(false)\r\n      }, 1000)\r\n    } else {\r\n      this.swall.mensajeOK('Sakey!!!', 'La contraseña no se ha guardado correctamente');\r\n      this.isCerrar = true;\r\n      setTimeout(() => {\r\n        this.editor.$modal.emit(false)\r\n      },1000)\r\n    }\r\n  }\r\n}\r\n"
+        }
+    ]
+}

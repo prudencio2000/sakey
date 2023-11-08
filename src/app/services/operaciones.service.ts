@@ -67,5 +67,13 @@ export class OperacionesService {
       })
     })
   }
+  async deleteKey (id:string):Promise<any>{
+    this.ipcService.send('delete-key',id)
+    return new Promise ((resolve)=>{
+      this.ipcService.on('delete-key-respuesta',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
 
 }

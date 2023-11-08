@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {  Component, Input, OnInit } from '@angular/core';
+import { OperacionesService } from '../services/operaciones.service';
+import { SwallService } from '../services/swall.service';
 
 @Component({
   selector: 'app-tabla',
@@ -13,7 +15,7 @@ export class TablaComponent implements OnInit {
   paginaAnterior: number = 0;
   paginaPosterior: number = 0;
   todasPaginas: number[] = [];
-  constructor(private cdr : ChangeDetectorRef) {
+  constructor(private operacionService: OperacionesService, private swall:SwallService) {
 
   }
   ngOnInit(): void {
@@ -79,5 +81,20 @@ export class TablaComponent implements OnInit {
     this.data=data;
     this.crearTablaPaginacion();
   }
-
+  async delete (id:string){
+    this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(
+      async (resultado)=>{
+        if (resultado.isConfirmed) {
+          await this.operacionService.deleteKey(id)
+          this.swall.mensajeOK("Borrado Realizado !!!","La claves se ha borrado")
+          let lsKey:any = await this.operacionService.lsKey();
+          lsKey = lsKey.data
+          this.updateDatos(lsKey);
+        } else {
+          this.swall.mensajeOK('Cancelar Borrado !!!','Has cancelado el borrado')
+        }
+      }
+    )
+    
+  }
 }

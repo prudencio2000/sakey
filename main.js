@@ -118,7 +118,6 @@ createWindow = () => {
                     data: []
                 });
             } else {
-       
                 event.reply('savekey-respuesta', {
                     status: true,
                     mensaje: "",
@@ -128,6 +127,24 @@ createWindow = () => {
         });
     });
 
+    ipcMain.on('delete-key', async (event, arg) => {
+        const stmt = db.prepare('DELETE FROM savekey WHERE id = ?');
+        stmt.run (arg, (err)=>{
+            if (err) {
+                event.reply('delete-key-respuesta', {
+                    status: false,
+                    mensaje: "",
+                    data: []
+                });
+            } else {
+                event.reply('delete-key-respuesta', {
+                    status: true,
+                    mensaje: "",
+                    data: []
+                });
+            }
+        })
+    });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
     appWin.setMenu(null);

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditorService } from '../services/editor.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OperacionesService } from '../services/operaciones.service';
 import { SwallService } from '../services/swall.service';
+import { TablaComponent } from '../tabla/tabla.component';
 
 @Component({
   selector: 'app-editor',
@@ -19,7 +20,7 @@ export class EditorComponent implements OnInit {
     ubicacion: new FormControl('', [Validators.required]),
     datosExtra: new FormControl('')
   });
-  
+  @ViewChild(TablaComponent) tableComponent: TablaComponent | any;
   constructor(private editor: EditorService, private operaciones: OperacionesService, private swall: SwallService) {
 
   }
@@ -38,9 +39,11 @@ export class EditorComponent implements OnInit {
       this.editor.$modal.emit(false)
     }, 1000)
   }
-  guardar() {
+  async guardar() {
     let datos = this.formulario.value
-    const resultado: any = this.operaciones.registrarKey(datos);
+    const resultado: any = await this.operaciones.registrarKey(datos);
+
+    
     if (resultado.status) {
       this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');
       this.isCerrar = true;

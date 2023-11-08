@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/app/tabla/tabla.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1699433204837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699433414633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -82,13 +82,16 @@\n     this.crearTablaPaginacion();\r\n   }\r\n   async delete (id:string){\r\n     this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(\r\n-      (resultado)=>{\r\n+      async (resultado)=>{\r\n         if (resultado.isConfirmed) {\r\n-          this.operacionService.deleteKey(id)\r\n+          await this.operacionService.deleteKey(id)\r\n+          let lsKey:any = await this.operacionService.lsKey();\r\n+          lsKey = lsKey.data\r\n+          this.updateDatos(lsKey);\r\n         } else {\r\n-          \r\n+          this.swall.mensajeOK('Cancelar Borrado !!!','Has cancelado el borrado')\r\n         }\r\n       }\r\n     )\r\n     \r\n"
+                },
+                {
+                    "date": 1699433458795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,8 +85,9 @@\n     this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(\r\n       async (resultado)=>{\r\n         if (resultado.isConfirmed) {\r\n           await this.operacionService.deleteKey(id)\r\n+          this.swall.mensajeOK(\"Borrado Realizado !!!\",\"El borrado se ha borrado\")\r\n           let lsKey:any = await this.operacionService.lsKey();\r\n           lsKey = lsKey.data\r\n           this.updateDatos(lsKey);\r\n         } else {\r\n"
+                },
+                {
+                    "date": 1699433468112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n     this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(\r\n       async (resultado)=>{\r\n         if (resultado.isConfirmed) {\r\n           await this.operacionService.deleteKey(id)\r\n-          this.swall.mensajeOK(\"Borrado Realizado !!!\",\"El borrado se ha borrado\")\r\n+          this.swall.mensajeOK(\"Borrado Realizado !!!\",\"La calve se ha borrado\")\r\n           let lsKey:any = await this.operacionService.lsKey();\r\n           lsKey = lsKey.data\r\n           this.updateDatos(lsKey);\r\n         } else {\r\n"
+                },
+                {
+                    "date": 1699433485681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n     this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(\r\n       async (resultado)=>{\r\n         if (resultado.isConfirmed) {\r\n           await this.operacionService.deleteKey(id)\r\n-          this.swall.mensajeOK(\"Borrado Realizado !!!\",\"La calve se ha borrado\")\r\n+          this.swall.mensajeOK(\"Borrado Realizado !!!\",\"La claves se ha borrado\")\r\n           let lsKey:any = await this.operacionService.lsKey();\r\n           lsKey = lsKey.data\r\n           this.updateDatos(lsKey);\r\n         } else {\r\n"
+                }
+            ],
+            "date": 1699433204837,
+            "name": "Commit-0",
+            "content": "import {  Component, Input, OnInit } from '@angular/core';\r\nimport { OperacionesService } from '../services/operaciones.service';\r\nimport { SwallService } from '../services/swall.service';\r\n\r\n@Component({\r\n  selector: 'app-tabla',\r\n  templateUrl: './tabla.component.html',\r\n  styleUrls: ['./tabla.component.scss']\r\n})\r\nexport class TablaComponent implements OnInit {\r\n  @Input('data') data: any;\r\n  dataView: any[][] = [];\r\n  paginas: number = 0;\r\n  pagina: number = 0;\r\n  paginaAnterior: number = 0;\r\n  paginaPosterior: number = 0;\r\n  todasPaginas: number[] = [];\r\n  constructor(private operacionService: OperacionesService, private swall:SwallService) {\r\n\r\n  }\r\n  ngOnInit(): void {\r\n  }\r\n \r\n  crearTablaPaginacion() {\r\n    const longitud = this.data.length;\r\n    let posicion = 0;\r\n    if (longitud != 0) {\r\n      this.paginas = Math.ceil(longitud / 5);\r\n      for (let i = 0; i < this.paginas; i++) {\r\n        this.todasPaginas.push(i + 1);\r\n        let data: any[] = []\r\n        for (let j = 0; j < 5; j++) {\r\n          if (posicion === longitud) break;\r\n          data.push(this.data[posicion]);\r\n\r\n          posicion++;\r\n        }\r\n        this.dataView.push(data)\r\n      }\r\n    }\r\n  }\r\n  changePagina(position: number) {\r\n    this.pagina = position;\r\n    if (position > 0) this.paginaAnterior = position\r\n    else this.paginaAnterior = 0\r\n    if (position <= this.paginas) this.paginaPosterior = position ;\r\n    else this.paginaPosterior = position\r\n\r\n  }\r\n  primero() {\r\n    this.pagina = 0\r\n    this.paginaAnterior = 0\r\n    this.paginaPosterior = 0;\r\n  }\r\n  anterior() {\r\n    this.pagina = this.paginaAnterior - 1;\r\n    this.paginaAnterior--;\r\n    this.paginaPosterior = this.pagina;\r\n\r\n  }\r\n\r\n  ultimo() {\r\n    this.pagina = this.paginas - 1;\r\n    this.paginaPosterior = this.paginas - 1;\r\n    this.paginaAnterior = this.paginas - 2;\r\n\r\n\r\n  }\r\n  posterior() {\r\n    this.pagina = this.paginaPosterior + 1;\r\n    if (this.pagina !== this.paginaPosterior) this.paginaPosterior++;\r\n    this.paginaAnterior++;\r\n\r\n  }\r\n  updateDatos (data:string){\r\n    this.dataView =[];\r\n    this.paginas = 0;\r\n    this.paginaAnterior = 0;\r\n    this.paginaPosterior = 0;\r\n    this.todasPaginas = [];\r\n    this.data=data;\r\n    this.crearTablaPaginacion();\r\n  }\r\n  async delete (id:string){\r\n    this.swall.confirmar('Borrar Claves !!!','¿Desea borrar los datos?').then(\r\n      (resultado)=>{\r\n        if (resultado.isConfirmed) {\r\n          this.operacionService.deleteKey(id)\r\n        } else {\r\n          \r\n        }\r\n      }\r\n    )\r\n    \r\n  }\r\n}\r\n"
+        }
+    ]
+}

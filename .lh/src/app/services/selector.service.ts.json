@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/services/selector.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1699432994197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1699432994197,
+            "name": "Commit-0",
+            "content": "import { EventEmitter, Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class SelectorService {\r\n  $modal = new EventEmitter<any>();\r\n  constructor() { }\r\n  \r\n}\r\n"
+        }
+    ]
+}

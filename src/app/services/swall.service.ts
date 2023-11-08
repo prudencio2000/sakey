@@ -27,4 +27,15 @@ export class SwallService {
     })
   }
 
+  confirmar (titulo: string, mensaje : string) {
+    return Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Estás seguro de que deseas eliminar este elemento?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    })
+  }
+
 }

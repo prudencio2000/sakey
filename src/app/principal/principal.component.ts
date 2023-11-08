@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TablaComponent } from '../tabla/tabla.component';
 import { OperacionesService } from '../services/operaciones.service';
+import { EditorService } from '../services/editor.service';
 
 @Component({
   selector: 'app-principal',
@@ -18,13 +19,11 @@ export class PrincipalComponent implements OnInit {
   data_aux: any[] = [];
 
 
-  constructor(private cdr: ChangeDetectorRef, private operaciones: OperacionesService) {
+  constructor(private cdr: ChangeDetectorRef, private operaciones: OperacionesService,private editor: EditorService) {
 
   }
   async ngOnInit() {
     let dat: any = await this.operaciones.lsKey();
-    
-    
     this.data = dat.data;
     this.data_aux = this.data;
     this.tableComponent.updateDatos(this.data_aux);
@@ -36,11 +35,19 @@ export class PrincipalComponent implements OnInit {
       this.tableComponent.updateDatos(this.data_aux);
       this.cdr.detectChanges();
     });
+    this.editor.$modal.subscribe(async (valor) => {
+      let save = await this.operaciones.lsKey();
+      save = save.data
+      
+      this.tableComponent.updateDatos(save);
+      this.anadir = valor;
+      this.cdr.detectChanges();
+    })
   }
   btnAnadir() {
     this.anadir = true;
     this.cdr.detectChanges();
   }
-
+  
 
 }
