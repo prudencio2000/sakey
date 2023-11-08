@@ -19,7 +19,7 @@
 body {
     height: 100vh;
     font-family: 'roboto', sans-serif;
-    position:relative;
+    position: relative;
 }
 
 .formulario {
@@ -52,7 +52,8 @@ label {
     }
 }
 
-input,textarea {
+input,
+textarea {
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
@@ -69,7 +70,7 @@ input,textarea {
 
 }
 
-textarea{
+textarea {
     resize: none;
     height: 150px;
 }
@@ -176,6 +177,53 @@ textarea{
         }
 
     }
+}
+
+.swal2-confirm {
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    border: none !important;
+    background-color: white !important;
+    outline: none !important;
+    cursor: pointer !important;
+    color: #28B463 !important;
+    border: 2px solid #28B463 !important;
+    border-radius: 10px !important;
+    transition: background 1s, border 1s, color 1s ease-in-out !important;
+    box-shadow: none !important;
+    &:hover {
+        background-color: #28B463 !important;
+        color: white !important;
+        border-color: white !important;
+    }
+
+}
+.swal2-cancel {
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    border: none !important;
+    background-color: white !important;
+    outline: none !important;
+    cursor: pointer !important;
+    color: #E74C3C !important;
+    border: 2px solid #E74C3C !important;
+    border-radius: 10px !important;
+    transition: background 1s, border 1s, color 1s ease-in-out !important;
+    
+    &:hover {
+        background-color: #E74C3C !important;
+        color: white !important;
+        border-color: white !important;
+    }
+
 }
 
 .btn-group {

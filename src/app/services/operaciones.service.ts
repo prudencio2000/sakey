@@ -75,5 +75,13 @@ export class OperacionesService {
       })
     })
   }
+  async questionValidacion ():Promise<any>{
+    this.ipcService.send('preguntas-validacion')
+    return new Promise ((resolve)=>{
+      this.ipcService.on('preguntas-validacion-respuesta',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
 
 }

@@ -40,22 +40,27 @@ export class EditorComponent implements OnInit {
     }, 1000)
   }
   async guardar() {
+    let valid = this.formulario.valid;
     let datos = this.formulario.value
-    const resultado: any = await this.operaciones.registrarKey(datos);
-
-    
-    if (resultado.status) {
-      this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');
-      this.isCerrar = true;
-      setTimeout(() => {
-        this.editor.$modal.emit(false)
-      }, 1000)
-    } else {
-      this.swall.mensajeOK('Sakey!!!', 'La contraseña no se ha guardado correctamente');
-      this.isCerrar = true;
-      setTimeout(() => {
-        this.editor.$modal.emit(false)
-      },1000)
+    if (valid){
+      const resultado: any = await this.operaciones.registrarKey(datos);
+      if (resultado.status) {
+        this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');
+        this.isCerrar = true;
+        setTimeout(() => {
+          this.editor.$modal.emit(false)
+        }, 1000)
+      } else {
+        this.swall.mensajeOK('Sakey!!!', 'La contraseña no se ha guardado correctamente');
+        this.isCerrar = true;
+        setTimeout(() => {
+          this.editor.$modal.emit(false)
+        },1000)
+      }
+    }else{
+      this.swall.mensajeKO('Error!!!', 'El usuario, contraseña y ubicación son obligatorias');
     }
+    
+   
   }
 }

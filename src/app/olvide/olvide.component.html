@@ -16,12 +16,10 @@
                 <i class="fa" [ngClass]="{'fa-eye': !ver1, 'fa-eye-slash' : ver1 }" (click)="verPassword1()"></i>
             </div>
             <h3 class="title-sub">Preguntas de Validación</h3>
-            <label for="">¿En que año naciste?</label>
-            <input type="text">
-            <label for="">¿Cual es el nombre de tu mascota?</label>
-            <input type="text">
-            <label for="">¿Cual es el nombre de tu abuela materna?</label>
-            <input type="text">
+            <ng-container *ngFor="let titulo of titulos">
+                <label for="">{{titulo}}</label>
+                <input type="text">
+            </ng-container>
             <div class="btn-group">
                 <button type="reset" class=" btn btn-red">Cancelar</button>
                 <button type="submit" class="btn btn-green">Actualizar</button>

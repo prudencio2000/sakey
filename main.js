@@ -145,6 +145,23 @@ createWindow = () => {
             }
         })
     });
+    ipcMain.on('preguntas-validacion', async (event, arg) => {
+        db.all("SELECT * FROM login_questions l , questions q WHERE l.id_question = q.id ", (err, row) => {
+            if (err) {
+                event.reply('preguntas-validacion-respuesta', {
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
+                });
+            } else {
+                event.reply('preguntas-validacion-respuesta', {
+                    status: true,
+                    mensaje: "",
+                    data: row
+                });
+            }
+        });
+    });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
     appWin.setMenu(null);
