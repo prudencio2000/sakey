@@ -8,7 +8,10 @@
     align-items: $item;
 }
 @mixin border-radius ($color,$grosor:2px,$radius:10px){
-  
     border: $grosor solid $color;
     border-radius: $radius;
+}
+@mixin color-shawon ($color:#E74C3C ,$color-claro:#F5B7B1){
+    color: $color;
+    text-shadow: 2px 2px 2px $color-claro;
 }

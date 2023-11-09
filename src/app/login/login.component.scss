@@ -1,18 +1,16 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
 .login {
     &-body {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: radial-gradient(#3498DB, #85C1E9);
+        @include area;
+        @include flex;
+        background: radial-gradient($azul, $azul-claro);
         position: fixed;
-        width: 100%;
     }
 
     &-container {
-        width: 500px;
-        height: auto;
-        background-color: white;
+        @include area (auto,500px);
+        background-color: $blanco;
         box-sizing: border-box;
         padding: 2rem;
         border-radius: 2rem;
@@ -20,7 +18,7 @@
 
 }
 a{
-    color: #3498DB;
+    color: $azul;
     text-align: center;
     text-decoration: none;
 }

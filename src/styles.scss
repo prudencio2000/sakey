@@ -78,12 +78,10 @@ textarea {
 }
 
 .title {
+    @include color-shawon;
     font-family: "lobster", sans-serif;
     text-align: center;
     font-size: 2.5rem;
-    color: $rojo;
-    text-shadow: 2px 2px 2px $rojo-claro;
-
     &-sub {
         font-family: "lobster", sans-serif;
         text-align: center;
