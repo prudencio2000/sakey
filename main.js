@@ -162,6 +162,18 @@ createWindow = () => {
             }
         });
     });
+    ipcMain.on('update-login', async (event, arg) => {
+        const stmt = db.prepare('UPDATE login SET password = ?');
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(arg.password, saltRounds);
+        stmt.run(hashedPassword);
+        stmt.finalize();
+        event.reply('update-login-respuesta',{
+            status:true,
+            mensaje:"Se ha actualizdo la contraseña",
+            data: []
+        })
+    });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 
     appWin.setMenu(null);

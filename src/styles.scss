@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/variables';
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +47,7 @@ label {
         top: 8px;
         right: 10px;
         font-size: 20px;
-        color: #E74C3C;
+        color: $rojo;
         cursor: pointer;
     }
 }
@@ -57,12 +57,12 @@ textarea {
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid #E74C3C;
-    color: #3498DB;
+    border: 2px solid $rojo;
+    color: $azul;
     outline: none;
 
     &::placeholder {
-        color: #3498DB;
+        color: $azul;
         font-family: 'roboto';
         font-size: 14px;
         font-weight: 600;
@@ -79,15 +79,15 @@ textarea {
     font-family: "lobster", sans-serif;
     text-align: center;
     font-size: 2.5rem;
-    color: #E74C3C;
-    text-shadow: 2px 2px 2px #F5B7B1;
+    color: $rojo;
+    text-shadow: 2px 2px 2px $rojo-claro;
 
     &-sub {
         font-family: "lobster", sans-serif;
         text-align: center;
-        color: #3498DB;
+        color: $azul;
         font-size: 2rem;
-        text-shadow: 2px 2px 2px #85C1E9;
+        text-shadow: 2px 2px 2px $azul-claro;
     }
 }
 
@@ -99,81 +99,81 @@ textarea {
     text-transform: uppercase;
     font-weight: 600;
     border: none;
-    background-color: white;
+    background-color: $blanco;
     outline: none;
     cursor: pointer;
 
     &-principal {
-        color: #3498DB;
-        border: 2px solid #3498DB;
+        color: $azul;
+        border: 2px solid $azul;
         border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
-            background-color: #3498DB;
-            color: white;
-            border-color: white;
+            background-color: $azul;
+            color: $blanco;
+            border-color: $blanco;
         }
 
         &.selected {
-            background-color: #3498DB;
-            color: white;
-            border-color: white;
+            background-color: $azul;
+            color: $blanco;
+            border-color: $blanco;
         }
 
         &:disabled {
-            color: #A6ACAF;
-            border: 2px solid #A6ACAF;
+            color: $gris;
+            border: 2px solid $gris;
             border-radius: 10px;
 
             &:hover {
-                color: #A6ACAF;
-                border: 2px solid #A6ACAF;
+                color: $gris;
+                border: 2px solid $gris;
                 border-radius: 10px;
-                background-color: white;
+                background-color: $blanco;
             }
         }
 
     }
 
     &-red {
-        color: #E74C3C;
-        border: 2px solid #E74C3C;
+        color: $rojo;
+        border: 2px solid $rojo;
         border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
-            background-color: #E74C3C;
-            color: white;
-            border-color: white;
+            background-color: $rojo;
+            color: $blanco;
+            border-color: $blanco;
         }
 
     }
 
     &-green {
-        color: #28B463;
-        border: 2px solid #28B463;
+        color: $verde;
+        border: 2px solid $verde;
         border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
-            background-color: #28B463;
-            color: white;
-            border-color: white;
+            background-color: $verde;
+            color: $blanco;
+            border-color: $blanco;
         }
 
     }
 
     &-orange {
-        color: #D4AC0D;
-        border: 2px solid #D4AC0D;
+        color: $amarillo;
+        border: 2px solid $amarillo;
         border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
-            background-color: #D4AC0D;
-            color: white;
-            border-color: white;
+            background-color: $amarillo;
+            color: $blanco;
+            border-color: $blanco;
         }
 
     }
@@ -187,18 +187,18 @@ textarea {
     text-transform: uppercase !important;
     font-weight: 600 !important;
     border: none !important;
-    background-color: white !important;
+    background-color: $blanco !important;
     outline: none !important;
     cursor: pointer !important;
-    color: #28B463 !important;
-    border: 2px solid #28B463 !important;
+    color: $verde !important;
+    border: 2px solid $verde !important;
     border-radius: 10px !important;
     transition: background 1s, border 1s, color 1s ease-in-out !important;
     box-shadow: none !important;
     &:hover {
-        background-color: #28B463 !important;
-        color: white !important;
-        border-color: white !important;
+        background-color: $verde !important;
+        color: $blanco !important;
+        border-color: $blanco !important;
     }
 
 }
@@ -210,18 +210,18 @@ textarea {
     text-transform: uppercase !important;
     font-weight: 600 !important;
     border: none !important;
-    background-color: white !important;
+    background-color: $blanco !important;
     outline: none !important;
     cursor: pointer !important;
-    color: #E74C3C !important;
-    border: 2px solid #E74C3C !important;
+    color: $rojo !important;
+    border: 2px solid $rojo !important;
     border-radius: 10px !important;
     transition: background 1s, border 1s, color 1s ease-in-out !important;
     
     &:hover {
-        background-color: #E74C3C !important;
-        color: white !important;
-        border-color: white !important;
+        background-color: $rojo !important;
+        color: $blanco !important;
+        border-color: $blanco !important;
     }
 
 }

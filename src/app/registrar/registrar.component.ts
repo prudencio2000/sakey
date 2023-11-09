@@ -62,7 +62,6 @@ export class RegistrarComponent implements OnInit {
     let array_datos: any = []
     for (let clave in datos) {
       if (clave.includes('question')) {
-        console.log("entro");
         array_datos.push({
           'idQuestion': clave.split("_")[1],
           'respuesta': datos[clave]

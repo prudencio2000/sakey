@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
   }
   async ngOnInit() {
     let datos = await this.operaciones.questionValidacion();
-    console.log(datos);
-    
+
   }
 
   verPassword() {

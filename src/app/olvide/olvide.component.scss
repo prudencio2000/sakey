@@ -1,8 +1,9 @@
 .olvide {
     &-body{
-        position: relative;
-        background: radial-gradient(#28B463, #7DCEA0);
+        position: fixed;
+        background: radial-gradient($verde, $verde-claro);
         height: 100%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -10,14 +11,14 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            color: white;
+            color: $blanco;
             font-size: 2rem;
             cursor: pointer;
            
         }
     }
     &-container{
-        background-color: white;
+        background-color: $blanco;
         width: 500px;
         box-sizing: border-box;
         padding: 2rem;

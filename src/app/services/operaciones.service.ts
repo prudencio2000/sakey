@@ -83,5 +83,13 @@ export class OperacionesService {
       })
     })
   }
+  async updatePassword (datos:any):Promise<any>{
+    this.ipcService.send('update-login',datos)
+    return new Promise ((resolve)=>{
+      this.ipcService.on('update-login-respuesta',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
 
 }
