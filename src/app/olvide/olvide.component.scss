@@ -1,12 +1,12 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+
 .olvide {
     &-body{
+        @include area;
+        @include flex;
         position: fixed;
         background: radial-gradient($verde, $verde-claro);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         .reset{
             position: absolute;
             top: 20px;

@@ -1,4 +1,5 @@
 @import './scss/variables';
+@import './scss/mixin';
 * {
     margin: 0;
     padding: 0;
@@ -54,6 +55,7 @@ label {
 
 input,
 textarea {
+    @include border-radius ($rojo);
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
@@ -104,11 +106,9 @@ textarea {
     cursor: pointer;
 
     &-principal {
+        @include border-radius ($azul);
         color: $azul;
-        border: 2px solid $azul;
-        border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
-
         &:hover {
             background-color: $azul;
             color: $blanco;
@@ -123,13 +123,10 @@ textarea {
 
         &:disabled {
             color: $gris;
-            border: 2px solid $gris;
-            border-radius: 10px;
-
+            @include border-radius ($gris);
             &:hover {
+                @include border-radius ($gris);
                 color: $gris;
-                border: 2px solid $gris;
-                border-radius: 10px;
                 background-color: $blanco;
             }
         }
@@ -137,9 +134,8 @@ textarea {
     }
 
     &-red {
+        @include border-radius ($rojo);
         color: $rojo;
-        border: 2px solid $rojo;
-        border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
@@ -151,9 +147,8 @@ textarea {
     }
 
     &-green {
+        @include border-radius ($verde);
         color: $verde;
-        border: 2px solid $verde;
-        border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
@@ -165,9 +160,8 @@ textarea {
     }
 
     &-orange {
+        @include border-radius ($amarillo);
         color: $amarillo;
-        border: 2px solid $amarillo;
-        border-radius: 10px;
         transition: background 1s, border 1s, color 1s ease-in-out;
 
         &:hover {
@@ -227,7 +221,6 @@ textarea {
 }
 
 .btn-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex($content:space-between);
+  
 }

@@ -1,0 +1,14 @@
+@mixin area ($altura : 100% , $anchura : 100%) {
+    height: $altura;
+    width: $anchura;
+}
+@mixin flex ($content : center, $item :center){
+    display: flex;
+    justify-content: $content;
+    align-items: $item;
+}
+@mixin border-radius ($color,$grosor:2px,$radius:10px){
+  
+    border: $grosor solid $color;
+    border-radius: $radius;
+}
