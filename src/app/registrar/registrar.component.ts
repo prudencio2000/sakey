@@ -5,7 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from '../class/questions.class';
 import { OperacionesService } from '../services/operaciones.service';
 
-import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { SwallService } from '../services/swall.service';
 

@@ -1,6 +1,7 @@
 import {  Component, Input, OnInit } from '@angular/core';
 import { OperacionesService } from '../services/operaciones.service';
 import { SwallService } from '../services/swall.service';
+import { ViewService } from '../services/view.service';
 
 @Component({
   selector: 'app-tabla',
@@ -15,10 +16,16 @@ export class TablaComponent implements OnInit {
   paginaAnterior: number = 0;
   paginaPosterior: number = 0;
   todasPaginas: number[] = [];
-  constructor(private operacionService: OperacionesService, private swall:SwallService) {
+  viewEditor:boolean = false;
+  constructor(private operacionService: OperacionesService, private swall:SwallService,private viewService:ViewService) {
 
   }
   ngOnInit(): void {
+    this.viewService.$modal.subscribe(async (valor) => {
+
+      this.viewEditor = valor;
+    });
+  
   }
  
   crearTablaPaginacion() {
@@ -96,5 +103,11 @@ export class TablaComponent implements OnInit {
       }
     )
     
+  }
+  async update (dat:any) {
+
+  }
+  async view (dat:any) {
+    this.viewEditor=true
   }
 }

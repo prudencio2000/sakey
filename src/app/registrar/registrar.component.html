@@ -3,7 +3,7 @@
         <h2 class="title">Bienvenidos a Sakey</h2>
         <form [formGroup]="formulario" class="formulario scroll"  (ngSubmit)="ngSubmit()">
             <label for="password">Contraseña</label>
-            <input placeholder="Pon tu contraseña" id="password" formControlName="password"  [type]="tipo">
+            <input placeholder="Pon tu contraseña" id="password" formControlName="password"  [type]="tipo"  pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$">
             <label for="repeat-password">Repite la Contraseña</label>
             <input placeholder="Pon tu contraseña" id="password" formControlName="repeatPassword"  [type]="tipo">
             <div class="item-checkbox">

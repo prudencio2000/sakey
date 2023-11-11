@@ -21,9 +21,9 @@
                         <i class="fa fa-pencil custom-animation"></i>
                     </button>
                     <button class="btn btn-red" (click)="delete(dat.id)">
-                        <i class="fa fa-trash"></i>
+                        <i class="fa fa-trash" (click)="update(dat)"></i>
                     </button>
-                    <button class="btn btn-principal">
+                    <button class="btn btn-principal" (click)="view(dat)">
                         <i class="fa fa-eye"></i>
                     </button>
                 </div>
@@ -46,3 +46,4 @@
                     class="fa fa-step-forward"></i></button></li>
     </ul>
 </div>
+<app-view *ngIf="viewEditor"></app-view>

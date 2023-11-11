@@ -4,6 +4,7 @@ import { TablaComponent } from '../tabla/tabla.component';
 import { OperacionesService } from '../services/operaciones.service';
 import { EditorService } from '../services/editor.service';
 
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -38,11 +39,11 @@ export class PrincipalComponent implements OnInit {
     this.editor.$modal.subscribe(async (valor) => {
       let save = await this.operaciones.lsKey();
       save = save.data
-      
       this.tableComponent.updateDatos(save);
       this.anadir = valor;
       this.cdr.detectChanges();
-    })
+    });
+  
   }
   btnAnadir() {
     this.anadir = true;

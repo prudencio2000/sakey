@@ -1,22 +1,19 @@
 @import '../../scss/variables';
 @import '../../scss/mixin.scss';
+
 .registre {
     &-body {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: radial-gradient(#3498DB, #85C1E9);
+        @include area;
+        @include flex;
+        background: radial-gradient($azul, $azul-claro);
         position: fixed;
-        width: 100%;
-
     }
 
     &-container {
         display: block;
         width: 500px;
         box-sizing: border-box;
-        background-color: white;
+        background-color: $blanco;
         padding: 20px;
         border-radius: 20px;
     }
@@ -27,19 +24,14 @@ input[type="checkbox"] {
     display: none;
 }
 
-/* Estilo del checkbox personalizado */
 .custom-checkbox {
-    width: 20px;
-    height: 20px;
-    background-color: #E74C3C;
-    /* Cambia el fondo del checkbox a color rojo (#E74C3C) */
+    @include area(20px, 20px);
+    @include flex;
+    background-color: $rojo;
     display: inline-block;
     cursor: pointer;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white !important;
+    color: $blanco !important;
 
     i {
         opacity: 0;
@@ -54,46 +46,30 @@ input[type="checkbox"]:checked+.custom-checkbox {
 }
 
 .item-checkbox {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include flex(flex-start);
     gap: 5px;
 
     label {
         font-size: 12px;
-        color: #3498DB;
+        color: $azul;
     }
 }
 
 .scroll {
     max-height: 500px;
     overflow-x: auto;
-
-    
 }
 ::-webkit-scrollbar {
-        width: 10px;
-        /* Ancho del scrollbar */
-        background-color: transparent;
-        /* Fondo transparente */
-    }
-
-    /* Estilo para el track del scrollbar (la barra de fondo) */
-    ::-webkit-scrollbar-track {
-        background-color: transparent;
-        /* Fondo transparente */
-    }
-
-    /* Estilo para el thumb del scrollbar (la barra deslizante) */
-    ::-webkit-scrollbar-thumb {
-        background-color: transparent;
-        /* Color de fondo del thumb */
-        border-radius: 5px;
-        /* Bordes redondeados del thumb */
-    }
-
-    /* Estilo para el thumb del scrollbar al pasar el mouse sobre él */
-    ::-webkit-scrollbar-thumb:hover {
-        background-color: transparent;
-        /* Cambiar el color al pasar el mouse */
-    }
+    width: 10px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+}

@@ -1,18 +1,16 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
 .principal {
     &-body {
-        height: 100%;
-        width: 100%;
-        background: radial-gradient(#3498DB, #85C1E9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include area;
+        @include flex;
+        background: radial-gradient($azul, $azul-claro);
         position: fixed;
     }
 
     &-container {
-        width: 90%;
-        height: 90%;
-        background-color: white;
+        @include area (90%,90%);
+        background-color: $blanco;
         box-sizing: border-box;
         border-radius: 2rem;
         padding: 1.7rem;
@@ -22,16 +20,15 @@
 
 .input-search {
     position: relative;
-
     input {
         width: 100%;
-        border-color: #3498DB;
+        border-color: $azul;
     }
 
     i {
         position: absolute;
         font-size: 20px;
-        color: #3498DB;
+        color: $azul;
         top: 9px;
         right: 9px;
     }
@@ -40,5 +37,5 @@
 .color{
     font-size: 24px;
     cursor: pointer;
-    color: #E74C3C;
+    color: $rojo;
 }
