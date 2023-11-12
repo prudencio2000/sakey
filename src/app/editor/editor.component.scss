@@ -11,7 +11,7 @@
 }
 
 .dialog {
-    background-color: white;
+    background-color: $blanco;
     width: 500px;
     box-sizing: border-box;
     padding: 30px;
@@ -29,59 +29,6 @@
 .cerrar-1 {
     animation: animacion-3 1s ease-in-out forwards;
 }
-
-@keyframes animacion {
-    0% {
-        background-color: transparent;
-    }
-
-    25% {
-        background-color: rgba($color: $negro, $alpha: .2);
-    }
-    50% {
-        background-color: rgba($color: $negro, $alpha: .3);
-    }
-    75% {
-        background-color: rgba($color: $negro, $alpha: .4);
-    }
-
-    100% {
-        background-color: rgba($color: $negro, $alpha: .5);
-    }
-
-
-}
-
-@keyframes animacion-1 {
-    0% {
-        opacity: 0;
-    }
-    
-    100% {
-        opacity: 1;
-    }
-
-
-}
-
-@keyframes animacion-2 {
-    0% {
-        background-color: rgba($color: $negro, $alpha: .5);
-
-    }
-
-    100% {
-        background-color: transparent;
-    }
-}
-
-@keyframes animacion-3 {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-
+.element {
+    @include animacion($negro);
 }

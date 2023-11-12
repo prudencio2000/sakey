@@ -1,9 +1,9 @@
-<div class="layout">
-    <div class="dialog">
-        <div class="close" (click)="close()">
+<div class="layout" [ngClass]="{'cerrar' : isCerrar}">
+    <div class="dialog" [ngClass]="{'cerrar-1' : isCerrar}">
+        <div class="close" (click)="close()" >
             <i class="fa fa-times"></i>
         </div>
-        <div class="dialog-body">
+        <div class="dialog-body"  >
             <h2 class="title">Bienvenido Sakey</h2>
             <ng-container *ngIf="key">
                 <label for="">Usuario o Correo:</label>
@@ -18,8 +18,6 @@
                 <label>Otros datos:</label>
                 <textarea name="" id="" cols="30" rows="10" disabled>{{key.otros_datos}}</textarea>
             </ng-container>
-
-
         </div>
     </div>
 </div>
