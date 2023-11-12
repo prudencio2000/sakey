@@ -5,15 +5,20 @@
         </div>
         <div class="dialog-body">
             <h2 class="title">Bienvenido Sakey</h2>
-            <label for="">Usuario o Correo:</label>
-            <input type="text" name="" value="pchaparrog@gmail.com" disabled>
-            <label>Contraseña:</label>
-            <input type="text" value="HIpojiovmopaijgoent" disabled>
-            <label for="">Ubicación:</label>
-            <input type="text" value="correo" disabled>
-            <label>Otros datos:</label>
-            <textarea name="" id="" cols="30"
-                rows="10" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minima hic, quae, asperiores beatae aliquid quibusdam voluptate omnis deserunt voluptatem neque aut earum recusandae! Possimus qui ducimus ipsa tempora officiis.</textarea>
+            <ng-container *ngIf="key">
+                <label for="">Usuario o Correo:</label>
+                <input type="text" name="" [value]="key.usuario_correo" disabled>
+                <label>Contraseña:</label>
+                <div class="input-eyes">
+                    <input type="text" [value]="this.password" disabled>
+                    <i class="fa" [ngClass]="{'fa-eye': !ver, 'fa-eye-slash' : ver }" (click)="verPassword()"></i>
+                </div>
+                <label for="">Ubicación:</label>
+                <input type="text" [value]="key.ubicacion" disabled>
+                <label>Otros datos:</label>
+                <textarea name="" id="" cols="30" rows="10" disabled>{{key.otros_datos}}</textarea>
+            </ng-container>
+
 
         </div>
     </div>

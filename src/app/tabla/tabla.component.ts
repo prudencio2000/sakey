@@ -108,6 +108,7 @@ export class TablaComponent implements OnInit {
 
   }
   async view (dat:any) {
-    this.viewEditor=true
+    this.viewEditor=true,
+    this.viewService.$id = dat.id;
   }
 }

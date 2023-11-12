@@ -118,6 +118,7 @@ createWindow = () => {
                     data: []
                 });
             } else {
+               
                 event.reply('savekey-respuesta', {
                     status: true,
                     mensaje: "",
@@ -158,6 +159,28 @@ createWindow = () => {
                     status: true,
                     mensaje: "",
                     data: row
+                });
+            }
+        });
+    });
+    ipcMain.on('ls-one', async (event, arg) => {
+        db.all(`SELECT * FROM savekey WHERE id = ${arg} `, (err, row) => {
+            if (err) {
+                event.reply('ls-one-respuesta', {
+                    status: false,
+                    mensaje: "Error no se ha encontrado ninguna pregunta",
+                    data: []
+                });
+            } else {
+                let password = crypto.AES.decrypt(row[0].password, clave);
+                password = password.toString(crypto.enc.Utf8);
+                event.reply('ls-one-respuesta', {
+                    status: true,
+                    mensaje: "",
+                    data: {
+                        passwordView : password,
+                        ...row [0]
+                    }
                 });
             }
         });

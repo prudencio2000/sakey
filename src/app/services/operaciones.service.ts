@@ -92,4 +92,12 @@ export class OperacionesService {
     })
   }
 
+  async lsOneKey (datos:any){
+    this.ipcService.send('ls-one',datos);
+    return new Promise ((resolve)=>{
+      this.ipcService.on('ls-one-respuesta',(event:any, arg:any)=>{
+        resolve(arg)
+      })
+    })
+  }
 }
