@@ -48,8 +48,12 @@ export class RegistrarComponent implements OnInit {
   }
   async ngSubmit() {
     const datos = this.formulario.value;
+    const passwordValid = this.formulario.get('password')?.valid;
     if (datos.password !== datos.repeatPassword){
       this.swall.mensajeKO("Error con las contraseña !!!","Error las contraseña no coincides");
+      return
+    }else if ( !passwordValid ){
+      this.swall.mensajeKO('Error !!!', "La contraseña es incorrecta. Tiene que poner una letra minuscula, mayuscula, número y cáracter especial. La logitud tiene que ser  8 a 16")
       return
     }else if (this.formulario.invalid) {
       this.swall.mensajeKO("Error con los Campos !!!","Error no tiene que estar ningun campo vacio y debes seleccionar tres preguntas");

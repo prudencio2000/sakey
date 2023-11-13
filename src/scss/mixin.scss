@@ -9,7 +9,7 @@
 }
 
 @mixin flex ($content : center, $item :center) {
-    display: flex;
+    display: flex !important;
     justify-content: $content;
     align-items: $item;
 }

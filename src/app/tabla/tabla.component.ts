@@ -1,4 +1,4 @@
-import {  Component, Input, OnInit } from '@angular/core';
+import {  Component, HostListener, Input, OnInit } from '@angular/core';
 import { OperacionesService } from '../services/operaciones.service';
 import { SwallService } from '../services/swall.service';
 import { ViewService } from '../services/view.service';
@@ -19,6 +19,7 @@ export class TablaComponent implements OnInit {
   todasPaginas: number[] = [];
   viewElement:boolean = false;
   viewEditor:boolean = false;
+  longitud :number = 8;
   constructor(private operacionService: OperacionesService, private swall:SwallService,private viewService:ViewService, private editor :EditorService) {
 
   }
@@ -30,16 +31,50 @@ export class TablaComponent implements OnInit {
       this.viewEditor = valor;
     });
   }
- 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.crearTablaPaginacion();
+  }
   crearTablaPaginacion() {
+    this.dataView= [];
+    this.todasPaginas = [];
+    this.paginas = 0;
+    this.pagina = 0;
+    this.paginaAnterior = 0;
+    this.paginaPosterior = 0;
+    if (window.innerHeight < 501) {
+      this.longitud = 2
+    }else if (window.innerHeight < 701){
+      this.longitud = 4
+    } else if (window.innerHeight < 1201){
+      this.longitud = 5
+    } 
+
+    if(window.innerHeight < 531 && window.innerWidth < 451){
+      this.longitud = 4
+    }else if(window.innerHeight < 561 && window.innerWidth < 451){
+      this.longitud = 5
+    }else if(window.innerHeight < 701 && window.innerWidth < 451){
+      this.longitud = 6
+    }else if(window.innerHeight < 731 && window.innerWidth < 451){
+      this.longitud = 7
+    }else if(window.innerHeight < 761 && window.innerWidth < 451){
+      this.longitud = 8
+    }else if(window.innerHeight < 801 && window.innerWidth < 451){
+      this.longitud = 9
+    }else if(window.innerHeight < 831 && window.innerWidth < 451){
+      this.longitud = 10
+    }else if(window.innerHeight > 831 && window.innerWidth < 451){
+      this.longitud = 10
+    }
     const longitud = this.data.length;
     let posicion = 0;
     if (longitud != 0) {
-      this.paginas = Math.ceil(longitud / 5);
+      this.paginas = Math.ceil(longitud / this.longitud);
       for (let i = 0; i < this.paginas; i++) {
         this.todasPaginas.push(i + 1);
         let data: any[] = []
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < this.longitud; j++) {
           if (posicion === longitud) break;
           data.push(this.data[posicion]);
 
