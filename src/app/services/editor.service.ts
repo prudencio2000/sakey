@@ -5,5 +5,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class EditorService {
   $modal = new EventEmitter<any>();
+  $id : any ="";
   constructor() { }
 }

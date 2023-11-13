@@ -3,7 +3,7 @@ const { ipcMain } = require('electron');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto-js');
 
-const clave = '8kZ$wE4Y#P1sXmN'; 
+const clave = '8kZ$wE4Y#P1sXmN';
 
 let sqlite3 = require('@journeyapps/sqlcipher').verbose();
 let db = new sqlite3.Database('./@D8p#vWzQy%T!kRn/$DbX&vR2Y!T9aPq.db');
@@ -44,26 +44,26 @@ createWindow = () => {
         const hashedPassword = await bcrypt.hash(arg.password, saltRounds);
         stmt.run(hashedPassword);
         stmt.finalize();
-        event.reply('registrar-login-respuesta',{
-            status:true,
-            mensaje:"Se ha registrado la contraseña",
+        event.reply('registrar-login-respuesta', {
+            status: true,
+            mensaje: "Se ha registrado la contraseña",
             data: []
         })
     });
     ipcMain.on('registrar-respuesta', async (event, arg) => {
         for (let i = 0; i < arg.length; i++) {
             let stmt = db.prepare("INSERT INTO login_questions (id_question,respuesta) VALUES (?,?)");
-            stmt.run(arg[i].idQuestion,arg[i].respuesta);
+            stmt.run(arg[i].idQuestion, arg[i].respuesta);
             stmt.finalize();
-        
+
         }
-        event.reply('registrar-respuesta-respuesta',{
-            status:true,
-            mensaje:"Se ha registrado las preguntas",
+        event.reply('registrar-respuesta-respuesta', {
+            status: true,
+            mensaje: "Se ha registrado las preguntas",
             data: []
         })
     });
-    ipcMain.on ('entrar',async(event, args )=>{
+    ipcMain.on('entrar', async (event, args) => {
         db.all("SELECT * FROM login LIMIT 1", async (err, row) => {
             if (err) {
                 event.reply('entrar-respuesta', {
@@ -98,10 +98,10 @@ createWindow = () => {
             }
         });
     });
-    ipcMain.on('registrar-key',(event,arg)=>{
+    ipcMain.on('registrar-key', (event, arg) => {
         let stmt = db.prepare("INSERT INTO savekey (usuario_correo,password,ubicacion,otros_datos) VALUES (?,?,?,?)");
         const password = crypto.AES.encrypt(arg.password, clave).toString();
-        stmt.run(arg.usuario,password,arg.ubicacion,arg.datosExtra);
+        stmt.run(arg.usuario, password, arg.ubicacion, arg.datosExtra);
         stmt.finalize();
         event.reply('registrar-key-save', {
             status: true,
@@ -118,7 +118,7 @@ createWindow = () => {
                     data: []
                 });
             } else {
-               
+
                 event.reply('savekey-respuesta', {
                     status: true,
                     mensaje: "",
@@ -130,7 +130,7 @@ createWindow = () => {
 
     ipcMain.on('delete-key', async (event, arg) => {
         const stmt = db.prepare('DELETE FROM savekey WHERE id = ?');
-        stmt.run (arg, (err)=>{
+        stmt.run(arg, (err) => {
             if (err) {
                 event.reply('delete-key-respuesta', {
                     status: false,
@@ -178,8 +178,8 @@ createWindow = () => {
                     status: true,
                     mensaje: "",
                     data: {
-                        passwordView : password,
-                        ...row [0]
+                        passwordView: password,
+                        ...row[0]
                     }
                 });
             }
@@ -191,11 +191,26 @@ createWindow = () => {
         const hashedPassword = await bcrypt.hash(arg.password, saltRounds);
         stmt.run(hashedPassword);
         stmt.finalize();
-        event.reply('update-login-respuesta',{
-            status:true,
-            mensaje:"Se ha actualizdo la contraseña",
+        event.reply('update-login-respuesta', {
+            status: true,
+            mensaje: "Se ha actualizdo la contraseña",
             data: []
         })
+    });
+
+    ipcMain.on('update-save', async (event, arg) => {
+
+        const stmt = db.prepare("UPDATE savekey SET usuario_correo = ?, password = ?, ubicacion = ?, otros_datos = ? WHERE id = ?");
+        const password = crypto.AES.encrypt(arg.password, clave).toString();
+        stmt.run(arg.usuario, password, arg.ubicacion, arg.datosExtra, arg.id);
+        stmt.finalize();
+
+        event.reply('update-save-respuesta', {
+            status: true,
+            mensaje: "Se ha actualizado las claves",
+            data: []
+        });
+
     });
     appWin.loadURL(`file://${__dirname}/dist/index.html`);
 

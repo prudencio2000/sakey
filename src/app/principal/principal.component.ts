@@ -47,6 +47,8 @@ export class PrincipalComponent implements OnInit {
   }
   btnAnadir() {
     this.anadir = true;
+    
+    this.editor.$id = "";
     this.cdr.detectChanges();
   }
   

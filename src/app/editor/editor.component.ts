@@ -20,12 +20,29 @@ export class EditorComponent implements OnInit {
     ubicacion: new FormControl('', [Validators.required]),
     datosExtra: new FormControl('')
   });
+  update: boolean = false;
+  datos: any;
+
   @ViewChild(TablaComponent) tableComponent: TablaComponent | any;
   constructor(private editor: EditorService, private operaciones: OperacionesService, private swall: SwallService) {
 
   }
-  ngOnInit(): void {
+  async ngOnInit() {
     this.isCerrar = false;
+    let id = this.editor.$id;
+    if (id) {
+      this.update = true
+      const resultado: any = await this.operaciones.lsOneKey(id);
+      this.datos = resultado.data;
+      console.log(this.datos);
+      this.formulario.setValue({
+        usuario: this.datos.usuario_correo,
+        password: this.datos.passwordView,
+        ubicacion: this.datos.ubicacion,
+        datosExtra: this.datos.otros_datos
+      });
+
+    }
   }
 
   verPassword() {
@@ -42,8 +59,17 @@ export class EditorComponent implements OnInit {
   async guardar() {
     let valid = this.formulario.valid;
     let datos = this.formulario.value
-    if (valid){
-      const resultado: any = await this.operaciones.registrarKey(datos);
+    if (valid) {
+      let resultado: any = {};
+      if (!this.update) {
+        resultado = await this.operaciones.registrarKey(datos);
+      } else {
+        datos.id = this.editor.$id;
+        resultado = await this.operaciones.updateSave(datos);
+      }
+      console.log(resultado);
+
+
       if (resultado.status) {
         this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');
         this.isCerrar = true;
@@ -55,12 +81,11 @@ export class EditorComponent implements OnInit {
         this.isCerrar = true;
         setTimeout(() => {
           this.editor.$modal.emit(false)
-        },1000)
+        }, 1000)
       }
-    }else{
+    } else {
       this.swall.mensajeKO('Error!!!', 'El usuario, contraseña y ubicación son obligatorias');
     }
-    
-   
+
   }
 }

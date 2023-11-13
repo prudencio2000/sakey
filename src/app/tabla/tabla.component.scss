@@ -26,7 +26,14 @@ th {
 th,
 td {
     padding: .5rem;
-    width: 115px;
+    width: 160px;
+    p{
+        width: 160px;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
 
 }
 ul {
