@@ -1,5 +1,6 @@
 @import '../../scss/variables';
 @import '../../scss/mixin.scss';
+@import '../../scss/query.scss';
 .login {
     &-body {
         @include area;
@@ -28,4 +29,7 @@ a{
     text-align: center;
     text-decoration: none;
     font-size: 12px;
+    @include mobil {
+        font-size: 14px;
+    }
 }

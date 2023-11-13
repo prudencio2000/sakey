@@ -28,17 +28,15 @@ body {
     gap: 10px;
 }
 
-// label {
-//     display: block;
-//     margin-top: 1.2rem;
-//     font-size: 16px;
-//     font-weight: bold;
-// }
+
 label {
     display: block;
     margin-top: 1.2rem;
     font-size: 12px;
     font-weight: bold;
+    @include mobil {
+        font-size: 16px ;
+    }
 }
 
 .input-eyes {
@@ -56,24 +54,6 @@ label {
     }
 }
 
-// input,
-// textarea {
-//     @include border-radius ($rojo);
-//     box-sizing: border-box;
-//     padding: 10px;
-//     border-radius: 10px;
-//     border: 2px solid $rojo;
-//     color: $azul;
-//     outline: none;
-
-//     &::placeholder {
-//         color: $azul;
-//         font-family: 'roboto';
-//         font-size: 14px;
-//         font-weight: 600;
-//     }
-
-// }
 input,
 textarea {
     @include border-radius ($rojo);
@@ -84,11 +64,17 @@ textarea {
     color: $azul;
     outline: none;
     font-size: 10px;
+    @include mobil {
+        font-size: 14px;
+    }
     &::placeholder {
         color: $azul;
         font-family: 'roboto';
         font-size: 10px;
         font-weight: 600;
+        @include mobil {
+            font-size: 14px;
+        }
     }
 
 }
@@ -100,19 +86,6 @@ textarea {
     }
 }
 
-// .title {
-//     @include color-shawon;
-//     font-family: "lobster", sans-serif;
-//     text-align: center;
-//     font-size: 2.5rem;
-//     &-sub {
-//         font-family: "lobster", sans-serif;
-//         text-align: center;
-//         color: $azul;
-//         font-size: 2rem;
-//         text-shadow: 2px 2px 2px $azul-claro;
-//     }
-// }
 .title {
     @include color-shawon;
     font-family: "lobster", sans-serif;
@@ -125,87 +98,10 @@ textarea {
         font-size: 2rem;
         text-shadow: 2px 2px 2px $azul-claro;
     }
+    @include mobil {
+        font-size: 2.5rem;
+    }
 }
-
-// .btn {
-//     display: block;
-//     box-sizing: border-box;
-//     padding: 10px;
-//     font-size: 14px;
-//     text-transform: uppercase;
-//     font-weight: 600;
-//     border: none;
-//     background-color: $blanco;
-//     outline: none;
-//     cursor: pointer;
-
-//     &-principal {
-//         @include border-radius ($azul);
-//         color: $azul;
-//         transition: background 1s, border 1s, color 1s ease-in-out;
-//         &:hover {
-//             background-color: $azul;
-//             color: $blanco;
-//             border-color: $blanco;
-//         }
-
-//         &.selected {
-//             background-color: $azul;
-//             color: $blanco;
-//             border-color: $blanco;
-//         }
-
-//         &:disabled {
-//             color: $gris;
-//             @include border-radius ($gris);
-//             &:hover {
-//                 @include border-radius ($gris);
-//                 color: $gris;
-//                 background-color: $blanco;
-//             }
-//         }
-
-//     }
-
-//     &-red {
-//         @include border-radius ($rojo);
-//         color: $rojo;
-//         transition: background 1s, border 1s, color 1s ease-in-out;
-
-//         &:hover {
-//             background-color: $rojo;
-//             color: $blanco;
-//             border-color: $blanco;
-//         }
-
-//     }
-
-//     &-green {
-//         @include border-radius ($verde);
-//         color: $verde;
-//         transition: background 1s, border 1s, color 1s ease-in-out;
-
-//         &:hover {
-//             background-color: $verde;
-//             color: $blanco;
-//             border-color: $blanco;
-//         }
-
-//     }
-
-//     &-orange {
-//         @include border-radius ($amarillo);
-//         color: $amarillo;
-//         transition: background 1s, border 1s, color 1s ease-in-out;
-
-//         &:hover {
-//             background-color: $amarillo;
-//             color: $blanco;
-//             border-color: $blanco;
-//         }
-
-//     }
-// }
 
 .btn {
     display: block;
@@ -218,7 +114,9 @@ textarea {
     background-color: $blanco;
     outline: none;
     cursor: pointer;
-
+    @include mobil {
+        font-size: 14px;
+    }
     &-principal {
         @include border-radius ($azul);
         color: $azul;
