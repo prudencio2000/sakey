@@ -3,6 +3,11 @@
     width: $anchura;
 }
 
+@mixin area-max($altura , $anchura ) {
+    max-height: $altura;
+    max-width: $anchura;
+}
+
 @mixin flex ($content : center, $item :center) {
     display: flex;
     justify-content: $content;

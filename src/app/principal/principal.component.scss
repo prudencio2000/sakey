@@ -1,21 +1,27 @@
 @import '../../scss/variables';
 @import '../../scss/mixin.scss';
+@import '../../scss/query.scss';
+
 .principal {
+
     &-body {
         @include area;
         @include flex;
+        flex-direction: column;
         background: radial-gradient($azul, $azul-claro);
         position: fixed;
     }
 
     &-container {
-        @include area (90%,90%);
+        @include area-max (90%, 90%);
+        @include area (600px,900px);
         background-color: $blanco;
         box-sizing: border-box;
         border-radius: 2rem;
         padding: 1.7rem;
-        overflow: auto;
+        overflow: none;
     }
+    
 }
 
 .input-search {

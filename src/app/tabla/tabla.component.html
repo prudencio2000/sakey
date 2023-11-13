@@ -11,17 +11,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let dat of dataView[pagina]">
-            <td>{{dat.usuario_correo}}</td>
-            <td>{{dat.password}}</td>
-            <td>{{dat.ubicacion}}</td>
-            <td>{{dat.otros_datos}}</td>
+            <td> <p>{{dat.usuario_correo}}</p> </td>
+            <td> <p>{{dat.password}}</p> </td>
+            <td> <p>{{dat.ubicacion}}</p> </td>
+            <td> <p>{{dat.otros_datos}}</p></td>
             <td>
                 <div class="btn-group">
-                    <button class="btn btn-orange">
+                    <button class="btn btn-orange"(click)="update(dat)">
                         <i class="fa fa-pencil custom-animation"></i>
                     </button>
                     <button class="btn btn-red" (click)="delete(dat.id)">
-                        <i class="fa fa-trash" (click)="update(dat)"></i>
+                        <i class="fa fa-trash" ></i>
                     </button>
                     <button class="btn btn-principal" (click)="view(dat)">
                         <i class="fa fa-eye"></i>
@@ -46,4 +46,5 @@
                     class="fa fa-step-forward"></i></button></li>
     </ul>
 </div>
-<app-view *ngIf="viewEditor"></app-view>
+<app-view *ngIf="viewElement"></app-view>
+<app-editor *ngIf="viewEditor"></app-editor>
