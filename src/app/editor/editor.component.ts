@@ -34,7 +34,6 @@ export class EditorComponent implements OnInit {
       this.update = true
       const resultado: any = await this.operaciones.lsOneKey(id);
       this.datos = resultado.data;
-      console.log(this.datos);
       this.formulario.setValue({
         usuario: this.datos.usuario_correo,
         password: this.datos.passwordView,
@@ -67,9 +66,6 @@ export class EditorComponent implements OnInit {
         datos.id = this.editor.$id;
         resultado = await this.operaciones.updateSave(datos);
       }
-      console.log(resultado);
-
-
       if (resultado.status) {
         this.swall.mensajeOK('Sakey!!!', 'Contraseña guardada correctamente');
         this.isCerrar = true;

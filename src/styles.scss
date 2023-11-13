@@ -1,5 +1,6 @@
 @import './scss/variables';
 @import './scss/mixin';
+@import './scss/query';
 * {
     margin: 0;
     padding: 0;
@@ -27,23 +28,27 @@ body {
     gap: 10px;
 }
 
+// label {
+//     display: block;
+//     margin-top: 1.2rem;
+//     font-size: 16px;
+//     font-weight: bold;
+// }
 label {
     display: block;
     margin-top: 1.2rem;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .input-eyes {
     position: relative;
-
     input {
         width: 100%;
     }
-
     i {
         position: absolute;
-        top: 8px;
+        top: 6px;
         right: 10px;
         font-size: 20px;
         color: $rojo;
@@ -51,6 +56,24 @@ label {
     }
 }
 
+// input,
+// textarea {
+//     @include border-radius ($rojo);
+//     box-sizing: border-box;
+//     padding: 10px;
+//     border-radius: 10px;
+//     border: 2px solid $rojo;
+//     color: $azul;
+//     outline: none;
+
+//     &::placeholder {
+//         color: $azul;
+//         font-family: 'roboto';
+//         font-size: 14px;
+//         font-weight: 600;
+//     }
+
+// }
 input,
 textarea {
     @include border-radius ($rojo);
@@ -60,26 +83,41 @@ textarea {
     border: 2px solid $rojo;
     color: $azul;
     outline: none;
-
+    font-size: 10px;
     &::placeholder {
         color: $azul;
         font-family: 'roboto';
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 600;
     }
 
 }
-
 textarea {
     resize: none;
     height: 150px;
+    &::-webkit-scrollbar{
+        background: transparent
+    }
 }
 
+// .title {
+//     @include color-shawon;
+//     font-family: "lobster", sans-serif;
+//     text-align: center;
+//     font-size: 2.5rem;
+//     &-sub {
+//         font-family: "lobster", sans-serif;
+//         text-align: center;
+//         color: $azul;
+//         font-size: 2rem;
+//         text-shadow: 2px 2px 2px $azul-claro;
+//     }
+// }
 .title {
     @include color-shawon;
     font-family: "lobster", sans-serif;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     &-sub {
         font-family: "lobster", sans-serif;
         text-align: center;
@@ -89,11 +127,91 @@ textarea {
     }
 }
 
+// .btn {
+//     display: block;
+//     box-sizing: border-box;
+//     padding: 10px;
+//     font-size: 14px;
+//     text-transform: uppercase;
+//     font-weight: 600;
+//     border: none;
+//     background-color: $blanco;
+//     outline: none;
+//     cursor: pointer;
+
+//     &-principal {
+//         @include border-radius ($azul);
+//         color: $azul;
+//         transition: background 1s, border 1s, color 1s ease-in-out;
+//         &:hover {
+//             background-color: $azul;
+//             color: $blanco;
+//             border-color: $blanco;
+//         }
+
+//         &.selected {
+//             background-color: $azul;
+//             color: $blanco;
+//             border-color: $blanco;
+//         }
+
+//         &:disabled {
+//             color: $gris;
+//             @include border-radius ($gris);
+//             &:hover {
+//                 @include border-radius ($gris);
+//                 color: $gris;
+//                 background-color: $blanco;
+//             }
+//         }
+
+//     }
+
+//     &-red {
+//         @include border-radius ($rojo);
+//         color: $rojo;
+//         transition: background 1s, border 1s, color 1s ease-in-out;
+
+//         &:hover {
+//             background-color: $rojo;
+//             color: $blanco;
+//             border-color: $blanco;
+//         }
+
+//     }
+
+//     &-green {
+//         @include border-radius ($verde);
+//         color: $verde;
+//         transition: background 1s, border 1s, color 1s ease-in-out;
+
+//         &:hover {
+//             background-color: $verde;
+//             color: $blanco;
+//             border-color: $blanco;
+//         }
+
+//     }
+
+//     &-orange {
+//         @include border-radius ($amarillo);
+//         color: $amarillo;
+//         transition: background 1s, border 1s, color 1s ease-in-out;
+
+//         &:hover {
+//             background-color: $amarillo;
+//             color: $blanco;
+//             border-color: $blanco;
+//         }
+
+//     }
+// }
+
 .btn {
     display: block;
     box-sizing: border-box;
     padding: 10px;
-    font-size: 14px;
+    font-size: 10px;
     text-transform: uppercase;
     font-weight: 600;
     border: none;
@@ -218,7 +336,6 @@ textarea {
 
 .btn-group {
     @include flex($content:space-between);
-  
 }
 
 .close {

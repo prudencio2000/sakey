@@ -29,8 +29,6 @@ export class OlvideComponent implements OnInit {
     datos = datos.data;
     this.titulos = datos.map((dato: any) => dato.titulo);
     this.respuesta = datos.map((dato: any) => dato.respuesta);
-    console.log(this.respuesta);
-
     let contador = 1;
     datos.forEach((data: any) => {
       this.formulario.addControl(`question_${contador}`, new FormControl('', [Validators.required]))
@@ -52,8 +50,6 @@ export class OlvideComponent implements OnInit {
     const valid = this.formulario.valid;
     const valor = this.formulario.value;
     let validQuestion = false;
-    console.log(valor);
-
     const passwordValid = this.formulario.get('password')?.valid;
     if (!passwordValid) {
       this.swall.mensajeKO('Error !!!', "La contraseña es incorrecta. Tiene que poner una letra minuscula, mayuscula, número y cáracter especial. La logitud tiene que ser  8 a 16")
