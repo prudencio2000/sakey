@@ -60,12 +60,8 @@ export class TablaComponent implements OnInit {
       this.longitud = 7
     }else if(window.innerHeight < 761 && window.innerWidth < 451){
       this.longitud = 8
-    }else if(window.innerHeight < 801 && window.innerWidth < 451){
-      this.longitud = 9
-    }else if(window.innerHeight < 831 && window.innerWidth < 451){
-      this.longitud = 10
-    }else if(window.innerHeight > 831 && window.innerWidth < 451){
-      this.longitud = 10
+    }else if(window.innerHeight > 761 && window.innerWidth < 451){
+      this.longitud = 8
     }
     const longitud = this.data.length;
     let posicion = 0;
