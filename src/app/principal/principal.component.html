@@ -1,0 +1,26 @@
+
+<div class="principal-body">
+   
+    <div class="principal-container">
+        <i class="fa fa-arrow-left reset color" [routerLink]="['']"></i>
+        <h2 class="title">Bienvenido saekey</h2>
+        <div class="btn-group btn-group-collum">
+            <button class="btn btn-green" (click)="btnAnadir()">
+                <i class="fa fa-plus"></i>
+                Añadir contraseña
+            </button>
+            <div class="input-search">
+                <form [formGroup]="buscador">
+                    <input type="text" class="search" placeholder="Buscador ..." formControlName="text">
+                </form>
+
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <h3 class="title-sub">Contraseñas</h3>
+            <app-tabla  ></app-tabla>
+    </div>
+
+</div>
+<app-editor *ngIf="anadir"></app-editor>

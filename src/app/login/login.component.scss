@@ -1,0 +1,35 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+@import '../../scss/query.scss';
+.login {
+    &-body {
+        @include area;
+        @include flex;
+        background: radial-gradient($azul, $azul-claro);
+        position: fixed;
+    }
+
+    &-container {
+        @include area (auto,500px);
+        @include area-max (auto,90%);
+        background-color: $blanco;
+        box-sizing: border-box;
+        padding: 2rem;
+        border-radius: 2rem;
+    }
+
+}
+// a{
+//     color: $azul;
+//     text-align: center;
+//     text-decoration: none;
+// }
+a{
+    color: $azul;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    @include mobil {
+        font-size: 14px;
+    }
+}

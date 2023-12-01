@@ -1,0 +1,31 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+
+.olvide {
+    &-body{
+        @include area;
+        @include flex;
+        position: fixed;
+        background: radial-gradient($verde, $verde-claro);
+        .reset{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: $blanco;
+            font-size: 2rem;
+            cursor: pointer;    
+        }
+    }
+    &-container{
+        background-color: $blanco;
+        width: 500px;
+        box-sizing: border-box;
+        padding: 2rem;
+        border-radius: 2rem;
+        max-height: 90%;
+        overflow: auto;
+        &::-webkit-scrollbar{
+            background-color: transparent;
+        }
+    }
+}

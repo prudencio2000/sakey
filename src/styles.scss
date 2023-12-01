@@ -1,1 +1,266 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/variables';
+@import './scss/mixin';
+@import './scss/query';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "Lobster";
+    src: url('assets/fuentes/Lobster-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "roboto";
+    src: url('assets/fuentes/Roboto-Regular.ttf') format('truetype');
+}
+
+body {
+    height: 100vh;
+    font-family: 'roboto', sans-serif;
+    position: relative;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @include mobil {
+        gap: 10px;
+    }
+}
+
+
+label {
+    display: block;
+    margin-top: .7rem;
+    font-size: 12px;
+    font-weight: bold;
+    @include mobil {
+        font-size: 16px ;
+        margin-top: 1.2rem;
+    }
+}
+
+.input-eyes {
+    position: relative;
+    input {
+        width: 100%;
+    }
+    i {
+        position: absolute;
+        top: 6px;
+        right: 10px;
+        font-size: 20px;
+        color: $rojo;
+        cursor: pointer;
+    }
+}
+
+input,
+textarea {
+    @include border-radius ($rojo);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid $rojo;
+    color: $azul;
+    outline: none;
+    font-size: 10px;
+    @include mobil {
+        font-size: 14px;
+    }
+    &::placeholder {
+        color: $azul;
+        font-family: 'roboto';
+        font-size: 10px;
+        font-weight: 600;
+        @include mobil {
+            font-size: 14px;
+        }
+    }
+
+}
+textarea {
+    resize: none;
+    height: 150px;
+    &::-webkit-scrollbar{
+        background: transparent
+    }
+}
+
+.title {
+    @include color-shawon;
+    font-family: "lobster", sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    &-sub {
+        font-family: "lobster", sans-serif;
+        text-align: center;
+        color: $azul;
+        font-size: 1.6rem;
+        text-shadow: 2px 2px 2px $azul-claro;
+        @include mobil {
+            font-size: 2rem;
+        }
+    }
+    @include mobil {
+        font-size: 2.5rem;
+    }
+}
+
+.btn {
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    background-color: $blanco;
+    outline: none;
+    cursor: pointer;
+    @include mobil {
+        font-size: 14px;
+    }
+    &-principal {
+        @include border-radius ($azul);
+        font-size: 10px;
+        color: $azul;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+        @include mobil {
+            font-size: 14px;
+        }
+        &:hover {
+            background-color: $azul;
+            color: $blanco;
+            border-color: $blanco;
+        }
+
+        &.selected {
+            background-color: $azul;
+            color: $blanco;
+            border-color: $blanco;
+        }
+
+        &:disabled {
+            color: $gris;
+            @include border-radius ($gris);
+            &:hover {
+                @include border-radius ($gris);
+                color: $gris;
+                background-color: $blanco;
+            }
+        }
+
+    }
+
+    &-red {
+        @include border-radius ($rojo);
+        color: $rojo;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: $rojo;
+            color: $blanco;
+            border-color: $blanco;
+        }
+
+    }
+
+    &-green {
+        @include border-radius ($verde);
+        color: $verde;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: $verde;
+            color: $blanco;
+            border-color: $blanco;
+        }
+
+    }
+
+    &-orange {
+        @include border-radius ($amarillo);
+        color: $amarillo;
+        transition: background 1s, border 1s, color 1s ease-in-out;
+
+        &:hover {
+            background-color: $amarillo;
+            color: $blanco;
+            border-color: $blanco;
+        }
+
+    }
+}
+
+.swal2-confirm {
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    border: none !important;
+    background-color: $blanco !important;
+    outline: none !important;
+    cursor: pointer !important;
+    color: $verde !important;
+    border: 2px solid $verde !important;
+    border-radius: 10px !important;
+    transition: background 1s, border 1s, color 1s ease-in-out !important;
+    box-shadow: none !important;
+    &:hover {
+        background-color: $verde !important;
+        color: $blanco !important;
+        border-color: $blanco !important;
+    }
+
+}
+.swal2-cancel {
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    border: none !important;
+    background-color: $blanco !important;
+    outline: none !important;
+    cursor: pointer !important;
+    color: $rojo !important;
+    border: 2px solid $rojo !important;
+    border-radius: 10px !important;
+    transition: background 1s, border 1s, color 1s ease-in-out !important;
+    
+    &:hover {
+        background-color: $rojo !important;
+        color: $blanco !important;
+        border-color: $blanco !important;
+    }
+
+}
+
+.btn-group {
+    @include flex($content:space-between);
+    gap : 5px;
+}
+
+.close {
+    @include area(36px, 36px);
+    @include flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: $blanco;
+    background-color: $rojo;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 1s ease-in-out;
+    &:hover {
+        background-color: darken($color: $rojo, $amount: 15);
+    }
+}

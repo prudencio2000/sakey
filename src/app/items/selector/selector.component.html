@@ -1,0 +1,11 @@
+<div class="selector">
+    <div class="selector-selected" (click)="expandir()">
+        <p>{{selecionado}}</p>
+        <i class="fa fa-chevron-down" ></i>
+    </div>
+    <div class="selector-option" *ngIf="options">
+        <ul>
+            <li *ngFor="let item of items; let i = index" (click)="selected(item)" [ngClass]="{'selected': item.id === selecionado}">{{item.titulo}}</li>
+        </ul>
+    </div>
+</div>

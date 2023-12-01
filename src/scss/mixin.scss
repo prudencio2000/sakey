@@ -1,0 +1,82 @@
+@mixin area ($altura : 100%, $anchura : 100%) {
+    height: $altura;
+    width: $anchura;
+}
+
+@mixin area-max($altura , $anchura ) {
+    max-height: $altura;
+    max-width: $anchura;
+}
+
+@mixin flex ($content : center, $item :center) {
+    display: flex !important;
+    justify-content: $content;
+    align-items: $item;
+}
+
+@mixin border-radius ($color, $grosor: 2px, $radius: 10px) {
+    border: $grosor solid $color;
+    border-radius: $radius;
+}
+
+@mixin color-shawon ($color: #E74C3C, $color-claro: #F5B7B1) {
+    color: $color;
+    text-shadow: 2px 2px 2px $color-claro;
+}
+
+@mixin animacion($color) {
+    @keyframes animacion {
+        0% {
+            background-color: transparent;
+        }
+
+        25% {
+            background-color: rgba($color, 0.2);
+        }
+
+        50% {
+            background-color: rgba($color, 0.3);
+        }
+
+        75% {
+            background-color: rgba($color, 0.4);
+        }
+
+        100% {
+            background-color: rgba($color, 0.5);
+        }
+    }
+
+    @keyframes animacion-1 {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+
+    }
+
+    @keyframes animacion-2 {
+        0% {
+            background-color: rgba($color: $color, $alpha: .5);
+
+        }
+
+        100% {
+            background-color: transparent;
+        }
+    }
+
+    @keyframes animacion-3 {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+
+    }
+}

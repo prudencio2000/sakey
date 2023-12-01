@@ -1,0 +1,30 @@
+<div class="olvide-body">
+<i class="fa fa-arrow-left reset" [routerLink]="['']"></i>
+
+    <div class="olvide-container">
+        <h2 class="title">Bienvenido Sakey</h2>
+        <form action="" class="formulario" [formGroup]="formulario" (ngSubmit)="cambiarPassword()">
+            <h3 class="title-sub">Elija una nueva contraseña </h3>
+            <label for="">Contraseña:</label>
+            <div class="input-eyes">
+                <input [type]="tipo" placeholder="Pon tu contraseña" id="password" formControlName="password" pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$">
+                <i class="fa" [ngClass]="{'fa-eye': !ver, 'fa-eye-slash' : ver }" (click)="verPassword()"></i>
+            </div>
+            <label for="">Repetir contraseña:</label>
+            <div class="input-eyes">
+                <input [type]="tipo1" placeholder="Pon tu contraseña" id="password"  formControlName="repetPassword">
+                <i class="fa" [ngClass]="{'fa-eye': !ver1, 'fa-eye-slash' : ver1 }" (click)="verPassword1()"></i>
+            </div>
+            <h3 class="title-sub">Preguntas de Validación</h3>
+            <ng-container *ngFor="let titulo of titulos; index as i ">
+                <label for="">{{titulo}}</label>
+                <input type="text" formControlName="question_{{i+1}}">
+            </ng-container>
+            <div class="btn-group">
+                <button type="reset" class=" btn btn-red">Cancelar</button>
+                <button type="submit" class="btn btn-green">Actualizar</button>
+            </div>
+
+        </form>
+    </div>
+</div>

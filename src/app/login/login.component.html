@@ -1,0 +1,15 @@
+<div class="login-body">
+    <div class="login-container">
+        <h2 class="title">Bienvenidos a Sakey</h2>
+        <form method="post" class="formulario" [formGroup]="formulario" (ngSubmit)="ngSubmit()">
+            <label for="password">Contraseña</label>
+            <div class="input-eyes">
+                <input [type]="tipo" placeholder="Pon tu contraseña" id="password" formControlName="password">
+                <i  class="fa" [ngClass]="{'fa-eye': !ver, 'fa-eye-slash' : ver }"  (click)="verPassword()"></i>
+            </div>
+            <a [routerLink]="['/olvide']">¿Has olvidado la contraseña ?</a>
+            <button type="submit" class="btn btn-principal">Iniciar sesión</button>
+        </form>
+    </div>
+
+</div>

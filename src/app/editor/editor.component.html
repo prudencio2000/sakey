@@ -1,0 +1,31 @@
+<div class="layout"  [ngClass]="{'cerrar' : isCerrar}">
+    <div class="dialog" [ngClass]="{'cerrar-1' : isCerrar}">
+        <div class="close" (click)="close()">
+            <i class="fa fa-times"></i>
+        </div>
+
+        <div class="dialog-header">
+            <h2 class="title">Añadir key</h2>
+        </div>
+        <div class="dialog-body">
+            <form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario">
+                <label for="">Usuario o Correo:</label>
+                <input type="text" placeholder="Pon aqui tu contraseña o tu usuario" formControlName="usuario">
+                <label for="">Contraseña</label>
+                <div class="input-eyes">
+                    <input [type]="tipo" placeholder="Pon tu contraseña" id="password" formControlName="password">
+                    <i class="fa" [ngClass]="{'fa-eye': !ver, 'fa-eye-slash' : ver }" (click)="verPassword()"></i>
+                </div>
+                <label for="">Ubicación</label>
+                <input type="text" placeholder="¿Donde pertenece esta contraseña?" formControlName="ubicacion">
+                <label for="">Otros Datos</label>
+                <textarea formControlName="datosExtra"></textarea>
+                <div class="btn-group ">
+                    <button class="btn btn-red" (click)="close()">Cancelar</button>
+                    <button type="submit" class="btn btn-green">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

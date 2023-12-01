@@ -1,0 +1,57 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+.reload {
+    @include area;
+    @include flex;
+    flex-direction: column;
+    i {
+        @include color-shawon();
+        font-size: 64px;
+        position: relative;
+        left: 20px;
+        animation: moveRight 3s linear infinite;
+    }
+}
+
+.texto::before {
+    @include color-shawon;
+    content: 'Cargando';
+    animation: cargando 3s linear infinite;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+@keyframes cargando {
+    0% {
+        content: 'Cargando';
+    }
+
+    25% {
+        content: 'Cargando.';
+    }
+
+    50% {
+        content: 'Cargando..';
+    }
+
+    75% {
+        content: 'Cargando...';
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-animation {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+
+}

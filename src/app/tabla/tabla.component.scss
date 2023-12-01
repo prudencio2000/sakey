@@ -1,0 +1,101 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+@import '../../scss/query.scss';
+
+.scroll {
+    overflow-x: auto;
+    padding-bottom: 10px ;
+    &::-webkit-scrollbar {
+        height: 5px;
+        /* Ancho del scrollbar */
+        background-color: transparent;
+        /* Fondo transparente */
+    }
+
+    /* Estilo para el track del scrollbar (la barra de fondo) */
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        /* Fondo transparente */
+    }
+
+    /* Estilo para el thumb del scrollbar (la barra deslizante) */
+    &::-webkit-scrollbar-thumb {
+        background-color: $azul-claro;
+        /* Color de fondo del thumb */
+        border-radius: 5px;
+        /* Bordes redondeados del thumb */
+    }
+
+    /* Estilo para el thumb del scrollbar al pasar el mouse sobre él */
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $azul;
+        /* Cambiar el color al pasar el mouse */
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+}
+
+thead {
+    color: $verde;
+}
+
+table,
+tr,
+td,
+th {
+    border: 2px solid $verde;
+    padding: 1rem;
+}
+
+td,
+th {
+    font-size: 12px;
+}
+
+th,
+td {
+    padding: .1rem;
+    width: 75px;
+
+    @include mobil {
+        padding: .5rem;
+        width: 160px;
+    }
+
+    p {
+        width: 75px;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @include mobil {
+            width: 160px;
+        }
+    }
+
+}
+
+ul {
+    margin-top: 12px;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+
+    li {
+        button {
+            @include area (24px,24px);
+            font-size:12px;
+            padding: 0;
+            @include mobil {
+                @include area (35px,35px);
+                font-size:14px;
+            }
+        }
+    }
+}

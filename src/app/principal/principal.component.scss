@@ -1,0 +1,49 @@
+@import '../../scss/variables';
+@import '../../scss/mixin.scss';
+@import '../../scss/query.scss';
+
+.principal {
+
+    &-body {
+        @include area;
+        @include flex;
+        flex-direction: column;
+        background: radial-gradient($azul, $azul-claro);
+        position: fixed;
+    }
+
+    &-container {
+        @include area-max (90%, 90%);
+        @include area (620px,910px);
+        background-color: $blanco;
+        box-sizing: border-box;
+        border-radius: 2rem;
+        padding: 1.7rem;
+        overflow: auto;
+        &::-webkit-scrollbar{
+            background-color: transparent;
+        }
+    }
+    
+}
+
+.input-search {
+    position: relative;
+    input {
+        width: 100%;
+        border-color: $azul;
+    }
+    i {
+        position: absolute;
+        font-size: 20px;
+        color: $azul;
+        top: 9px;
+        right: 9px;
+    }
+}
+
+.color{
+    font-size: 24px;
+    cursor: pointer;
+    color: $rojo;
+}
