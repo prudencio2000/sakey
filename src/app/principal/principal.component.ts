@@ -20,7 +20,7 @@ export class PrincipalComponent implements OnInit {
   data_aux: any[] = [];
 
 
-  constructor(private cdr: ChangeDetectorRef, private operaciones: OperacionesService,private editor: EditorService) {
+  constructor(private cdr: ChangeDetectorRef, private operaciones: OperacionesService, private editor: EditorService) {
 
   }
   async ngOnInit() {
@@ -43,14 +43,44 @@ export class PrincipalComponent implements OnInit {
       this.anadir = valor;
       this.cdr.detectChanges();
     });
-  
+
   }
   btnAnadir() {
     this.anadir = true;
-    
+
     this.editor.$id = "";
     this.cdr.detectChanges();
   }
-  
-
+  exportar() {
+    const jsonData = JSON.stringify(this.data);
+    const a = document.createElement('a');
+    const file = new Blob([jsonData], { type: 'application/json' });
+    a.href = URL.createObjectURL(file);
+    a.download = 'datos.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  async importar( event:any){
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json'; 
+      input.addEventListener('change', (e: any) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = async (event: any) => {
+          const jsonData = JSON.parse(event.target.result);
+          jsonData.forEach( async (datos:any) => {
+            datos.usuario = datos.usuario_correo
+            datos.datosExtra = datos.otros_datos
+            let resultado:any  = await this.operaciones.registrarKey(datos);
+          })
+          this.tableComponent.updateDatos(jsonData);
+          this.cdr.detectChanges()
+        };
+    
+        reader.readAsText(file);
+      });
+      input.click();
+  }
 }

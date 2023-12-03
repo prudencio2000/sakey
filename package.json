@@ -49,7 +49,7 @@
   "build": {
     "appId": "sakey",
     "directories": {
-      "output": "C:/Users/Silice/Desktop/Prudencio/Proyectos/sakey/dist"
+      "output": "D:/Proyecto/sakey/dist"
     },
     "compression": "normal",
     "mac": {
